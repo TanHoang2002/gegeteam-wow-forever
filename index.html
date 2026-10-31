@@ -1,0 +1,1272 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>GegeTeam — Thu mua Gold WoW Forever | World of Warcraft: Forever</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --gold: #f5c542;
+        --gold-bright: #ffd968;
+        --gold-deep: #b97e0e;
+        --wow-yellow: #ffd100;
+        --alliance: #2476c9;
+        --alliance-deep: #0f3d75;
+        --horde: #c8341f;
+        --horde-deep: #6e1308;
+        --zalo: #0068ff;
+        --display: "Lora", "Be Vietnam Pro", Georgia, serif;
+        --sans: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #ece0c3;
+          --bg-2: #e2d3ab;
+          --surface: #fdf6dd;
+          --surface-2: #f3e9c8;
+          --ink: #2b2110;
+          --ink-soft: #5d4f31;
+          --ink-faint: #8a795a;
+          --line: #cbb27a;
+          --field: #f7efcf;
+          --shadow: 0 18px 40px rgba(74, 52, 4, 0.22);
+          --stone: #171a26;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #080a12;
+          --bg-2: #0d101c;
+          --surface: #141826;
+          --surface-2: #0f1220;
+          --ink: #f4ecd2;
+          --ink-soft: #c9bd97;
+          --ink-faint: #8f866c;
+          --line: #4a3f22;
+          --field: #0b0e18;
+          --shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+          --stone: #171a26;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(1000px 500px at 50% -5%, rgba(245, 197, 66, 0.10), transparent 60%),
+          var(--bg);
+        color: var(--ink);
+        line-height: 1.62;
+        font-variant-numeric: lining-nums;
+        -webkit-font-smoothing: antialiased;
+      }
+      img { max-width: 100%; display: block; }
+      a { color: inherit; }
+      .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+      .display { font-family: var(--display); }
+      h1, h2 { text-wrap: balance; font-variant-numeric: lining-nums; }
+
+      /* ---------- War banner strip ---------- */
+      .war-strip {
+        background: linear-gradient(90deg, var(--alliance-deep) 0%, #10131f 38%, #10131f 62%, var(--horde-deep) 100%);
+        color: #f4ecd2;
+        text-align: center;
+        font-family: var(--sans);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        font-size: 0.72rem;
+        padding: 8px 12px;
+        text-transform: uppercase;
+      }
+      .war-strip { position: relative; display: flex; align-items: center; justify-content: center; min-height: 36px; }
+      .war-slogan { display: inline-block; }
+      .lang-switch {
+        position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+        display: inline-flex; gap: 3px; align-items: center;
+        background: rgba(0,0,0,0.45); border: 1px solid rgba(245,197,66,0.55);
+        border-radius: 999px; padding: 3px;
+      }
+      .lang-switch .lang-label { font-size: 0.62rem; letter-spacing: 0.08em; color: #c9bd97; padding: 0 4px 0 6px; text-transform: uppercase; font-weight: 700; }
+      .lang-btn {
+        appearance: none; border: 1px solid transparent; background: transparent; color: #f4ecd2;
+        font: inherit; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em;
+        border-radius: 999px; padding: 4px 11px; cursor: pointer; line-height: 1.2;
+        transition: background .2s, color .2s, border-color .2s;
+      }
+      .lang-btn:hover { border-color: rgba(245,197,66,0.7); color: var(--gold-bright); }
+      .lang-btn:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+      .lang-btn.is-active { background: linear-gradient(180deg, var(--gold-bright), var(--gold)); color: #241a00; border-color: #ffe9a0; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+      .lang-btn.is-active:hover { color: #241a00; }
+      @media (max-width: 700px) {
+        .war-strip { flex-direction: column; gap: 7px; padding-bottom: 10px; }
+        .lang-switch { position: static; transform: none; }
+      }
+      .war-strip .blue { color: #7db9f5; }
+      .war-strip .red { color: #ff9a86; }
+      .war-strip .sep { color: var(--gold); margin: 0 8px; }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        color: #f7f0d8;
+        background: #0a0c14;
+        isolation: isolate;
+      }
+      .hero-bg {
+        position: absolute; inset: 0; z-index: -2;
+        width: 100%; height: 100%; object-fit: cover; object-position: center 42%;
+      }
+      .hero::before {
+        content: ""; position: absolute; inset: 0; z-index: -1;
+        background:
+          linear-gradient(180deg, rgba(5,6,12,0.62) 0%, rgba(5,6,12,0.28) 34%, rgba(5,6,12,0.66) 72%, #080a12 100%),
+          radial-gradient(800px 420px at 50% 8%, transparent 40%, rgba(5,6,12,0.35) 100%);
+      }
+      .hero-inner { padding: 34px 0 0; }
+      .hero-top { text-align: center; max-width: 900px; margin: 0 auto; }
+      .hero h1 {
+        margin: 10px 0 0;
+        font-family: var(--display);
+        font-size: clamp(2.35rem, 7.4vw, 4.85rem);
+        line-height: 1.08; font-weight: 700;
+        color: var(--wow-yellow);
+        letter-spacing: 0.01em;
+        text-shadow:
+          0 2px 0 rgba(122,82,0,0.9),
+          0 5px 16px rgba(0,0,0,0.85),
+          0 0 34px rgba(255, 180, 0, 0.28);
+        text-transform: uppercase;
+      }
+      .hero h1 .game-name { display: block; }
+      .hero h1 .forever {
+        display: block;
+        color: #f7f0d8;
+        font-size: 0.5em; font-weight: 600; margin-top: 0.1em;
+        letter-spacing: 0.26em; text-indent: 0.26em;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 0 24px rgba(64, 190, 90, 0.28);
+      }
+      .hero-slogan {
+        margin: 20px auto 0; max-width: 44rem;
+        font-family: var(--display); font-style: italic; font-weight: 600;
+        font-size: clamp(1.3rem, 3.2vw, 1.75rem); line-height: 1.4;
+        color: var(--gold-bright);
+        text-shadow: 0 2px 0 rgba(122,82,0,0.55), 0 4px 14px rgba(0,0,0,0.9), 0 0 26px rgba(255,180,0,0.22);
+      }
+      .hero-slogan .slogan-sep { color: #f7f0d8; font-style: normal; margin: 0 0.35em; font-size: 0.72em; vertical-align: 0.12em; }
+      .hero-lede {
+        margin: 10px auto 0; max-width: 44rem;
+        font-size: clamp(0.98rem, 2.2vw, 1.1rem); line-height: 1.65; font-weight: 500;
+        color: #efe8cd; text-shadow: 0 2px 12px rgba(0,0,0,0.95);
+      }
+      .hero-lede strong { color: var(--gold-bright); }
+
+      .hero-grid {
+        margin-top: 30px;
+        display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 26px; align-items: stretch;
+      }
+
+      /* Lore / brand panel */
+      .lore-panel {
+        background: linear-gradient(165deg, rgba(16,19,32,0.94), rgba(10,12,22,0.88));
+        border: 1px solid rgba(245,197,66,0.55);
+        box-shadow: 0 0 0 3px rgba(0,0,0,0.55), 0 0 0 4px rgba(245,197,66,0.28), 0 24px 50px rgba(0,0,0,0.6);
+        border-radius: 10px;
+        padding: 22px;
+        display: flex; flex-direction: column;
+      }
+      .lore-head { display: flex; gap: 16px; align-items: center; }
+      .lore-head img { width: 96px; height: 96px; object-fit: contain; flex: none; filter: drop-shadow(0 8px 18px rgba(245,170,40,0.35)); }
+      .lore-head h2 { margin: 0; font-family: var(--display); font-weight: 600; font-size: 1.3rem; line-height: 1.35; letter-spacing: 0.01em; }
+      .lore-head h2 span { color: var(--gold-bright); }
+      .lore-head p { margin: 4px 0 0; color: #cbbf9b; font-size: 0.9rem; }
+      .lore-quote {
+        margin: 18px 0 0; padding: 13px 15px;
+        border-left: 3px solid var(--gold);
+        background: rgba(245,197,66,0.08);
+        font-family: var(--display); font-weight: 500; line-height: 1.6;
+        font-style: italic; color: #f1e8c8; font-size: 1rem;
+      }
+      .rune-stats {
+        margin: 18px 0 0; padding: 0; list-style: none;
+        display: grid; grid-template-columns: 1fr 1fr; gap: 9px;
+      }
+      .rune-stats li {
+        border: 1px solid rgba(245,197,66,0.32);
+        background: rgba(255,255,255,0.04);
+        border-radius: 8px; padding: 9px 12px;
+      }
+      .rune-stats b { display: block; font-family: var(--display); font-weight: 600; font-variant-numeric: lining-nums tabular-nums; color: var(--gold-bright); font-size: 1rem; letter-spacing: 0.045em; }
+      .rune-stats span { font-size: 0.8rem; color: #c9bd97; }
+      .lore-foot { margin: 16px 0 0; color: #a99e7d; font-size: 0.84rem; }
+
+      /* ---------- Buying card : WoW quest / auction panel ---------- */
+      .buy-card {
+        background:
+          linear-gradient(170deg, rgba(31,27,16,0.97), rgba(17,15,10,0.98));
+        color: #f4ecd2;
+        border-radius: 10px;
+        box-shadow: 0 0 0 3px #000, 0 0 0 4px #a97f16, 0 0 0 6px #2a2108, 0 26px 55px rgba(0,0,0,0.7), 0 0 55px rgba(255,170,0,0.14);
+        padding: 24px 24px 22px;
+        border: 1px solid #e8c75a;
+      }
+      .buy-card h2 {
+        margin: 0; font-family: var(--display); font-size: 1.4rem; font-weight: 600; line-height: 1.3; letter-spacing: 0.01em;
+        display: flex; align-items: center; gap: 11px; color: #fff3cf;
+      }
+      .buy-card h2 em { font-style: normal; color: var(--wow-yellow); }
+      .coin {
+        width: 36px; height: 36px; flex: none; border-radius: 50%;
+        background: radial-gradient(circle at 32% 28%, #fff0ae, var(--gold) 52%, #9c6a05);
+        box-shadow: inset 0 0 0 3px rgba(122,77,2,0.55), inset 0 -4px 7px rgba(122,77,2,0.55), 0 4px 10px rgba(0,0,0,0.6);
+        display: inline-flex; align-items: center; justify-content: center;
+        font-family: var(--display); font-weight: 700; font-size: 1.02rem; color: #6d4700;
+      }
+      .buy-sub { margin: 7px 0 0; color: #cfc096; font-size: 0.92rem; }
+      .buy-sub strong { color: #ffe08a; }
+      .pick-label {
+        margin: 19px 0 8px; font-size: 0.75rem; font-weight: 700;
+        letter-spacing: 0.11em; text-transform: uppercase; color: #b7a678;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .pick-label::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(245,197,66,0.5), transparent); }
+      .seg { display: grid; gap: 8px; }
+      .seg-ruleset { grid-template-columns: repeat(4, 1fr); }
+      .seg-faction { grid-template-columns: 1fr 1fr; }
+      .seg button {
+        --sweep: linear-gradient(90deg, #8a6a12 0%, #c9a227 55%, #f0c75e 100%);
+        position: relative; overflow: hidden; isolation: isolate;
+        appearance: none; font: inherit; cursor: pointer;
+        border: 1.5px solid #55482a; background: #211d13; color: #cfc096;
+        border-radius: 8px; padding: 10px 4px;
+        font-size: 0.88rem; font-weight: 700;
+        transition: border-color .2s, color .2s, transform .15s, box-shadow .3s ease;
+      }
+      /* Lớp màu quét từ trái sang phải — chỉ áp cho nút CHƯA chọn */
+      .seg button::before {
+        content: ""; position: absolute; inset: 0; z-index: -1;
+        background: var(--sweep);
+        transform: scaleX(0); transform-origin: left center;
+        transition: transform .42s cubic-bezier(.22,.61,.36,1);
+      }
+      .seg button[aria-pressed="false"]:hover::before,
+      .seg button[aria-pressed="false"]:focus-visible::before,
+      .seg button[aria-pressed="false"]:active::before { transform: scaleX(1); }
+      /* Vệt sáng lướt qua — áp cho cả nút chưa chọn lẫn đang chọn */
+      .seg button::after {
+        content: ""; position: absolute; top: 0; bottom: 0; left: -75%; width: 55%; z-index: 2;
+        background: linear-gradient(105deg, transparent, rgba(255,255,255,0.32), transparent);
+        transform: skewX(-18deg); pointer-events: none;
+        transition: left .55s ease;
+      }
+      .seg button:hover::after, .seg button:focus-visible::after, .seg button:active::after { left: 115%; }
+      .seg button:hover { border-color: var(--gold); transform: translateY(-1px); }
+      .seg button:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+      /* Nút ruleset chưa chọn khi hover: nền vàng tràn vào, chữ sẫm đọc rõ */
+      .seg-ruleset button[aria-pressed="false"]:hover,
+      .seg-ruleset button[aria-pressed="false"]:focus-visible,
+      .seg-ruleset button[aria-pressed="false"]:active { color: #241a00; border-color: var(--gold-bright); box-shadow: 0 0 8px rgba(245,197,66,0.22); }
+      .seg button[aria-pressed="true"] {
+        border-color: var(--gold-bright); background: rgba(245,197,66,0.17); color: #fff3cf;
+        box-shadow: inset 0 0 0 1px rgba(245,197,66,0.35), 0 0 14px rgba(245,197,66,0.18);
+      }
+      /* Nút đang chọn khi hover: giữ nguyên viền + phát sáng mạnh, chỉ có vệt sáng lướt qua */
+      .seg button[aria-pressed="true"]:hover { transform: none; }
+      .seg-faction button { padding: 12px 6px; font-family: var(--display); font-weight: 600; letter-spacing: 0.015em; font-size: 0.97rem; }
+      .seg-faction button small { display: block; font-family: "Be Vietnam Pro", sans-serif; letter-spacing: 0; font-size: 0.7rem; font-weight: 600; opacity: 0.85; margin-top: 2px; }
+      .seg-faction button[data-faction="alliance"] { --sweep: linear-gradient(90deg, #0f3d75 0%, #2476c9 55%, #5ea9f7 100%); border-color: rgba(80,160,245,0.55); }
+      .seg-faction button[data-faction="horde"] { --sweep: linear-gradient(90deg, #6e1308 0%, #c8341f 55%, #f2603f 100%); border-color: rgba(245,110,85,0.55); }
+      /* Nút faction chưa chọn khi hover: màu phe tràn vào, chữ trắng đọc rõ */
+      .seg-faction button[data-faction="alliance"][aria-pressed="false"]:hover,
+      .seg-faction button[data-faction="alliance"][aria-pressed="false"]:focus-visible,
+      .seg-faction button[data-faction="alliance"][aria-pressed="false"]:active { color: #ffffff; border-color: #6db3ff; box-shadow: 0 0 8px rgba(36,118,201,0.3); }
+      .seg-faction button[data-faction="horde"][aria-pressed="false"]:hover,
+      .seg-faction button[data-faction="horde"][aria-pressed="false"]:focus-visible,
+      .seg-faction button[data-faction="horde"][aria-pressed="false"]:active { color: #ffffff; border-color: #ff8266; box-shadow: 0 0 8px rgba(200,52,31,0.3); }
+      .seg-faction button[data-faction="alliance"][aria-pressed="true"] {
+        border-color: #6db3ff; background: linear-gradient(160deg, rgba(36,118,201,0.5), rgba(15,61,117,0.55)); color: #eaf4ff;
+        box-shadow: inset 0 0 0 1px rgba(140,195,255,0.5), 0 0 16px rgba(36,118,201,0.4);
+      }
+      .seg-faction button[data-faction="horde"][aria-pressed="true"] {
+        border-color: #ff8266; background: linear-gradient(160deg, rgba(200,52,31,0.5), rgba(110,19,8,0.55)); color: #ffefe9;
+        box-shadow: inset 0 0 0 1px rgba(255,160,140,0.5), 0 0 16px rgba(200,52,31,0.4);
+      }
+      .faction-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; vertical-align: 1px; }
+      .dot-a { background: #5ea9f7; box-shadow: 0 0 7px rgba(94,169,247,0.9); }
+      .dot-h { background: #f2603f; box-shadow: 0 0 7px rgba(242,96,63,0.9); }
+
+      .rate-line {
+        margin-top: 19px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+        border-top: 1px dashed rgba(245,197,66,0.4); padding-top: 15px;
+      }
+      .rate-line .rl-label { color: #cfc096; font-size: 0.9rem; font-weight: 600; }
+      .rate-value { font-size: 1.22rem; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; color: var(--gold-bright); white-space: nowrap; }
+      .rate-value.pending { color: #a99e7d; font-size: 1.03rem; }
+
+      .calc { margin-top: 13px; display: grid; grid-template-columns: 1fr auto auto; align-items: end; gap: 14px; }
+      .calc .qty label { display: block; font-size: 0.82rem; font-weight: 600; color: #cfc096; margin-bottom: 6px; }
+      .calc input {
+        width: 100%; font: inherit; font-size: 1.15rem; font-weight: 700; color: #fff3cf;
+        background: #0d0b06; border: none; border-bottom: 2px solid #8a795a;
+        border-radius: 7px 7px 0 0; padding: 10px 12px; outline: none;
+      }
+      .calc input:focus { border-bottom-color: var(--gold-bright); }
+      .calc input::placeholder { color: #8f866c; font-weight: 500; font-size: 1rem; }
+      .calc .times { font-size: 1.3rem; font-weight: 700; color: #a99e7d; padding-bottom: 8px; }
+      .calc .per { text-align: right; padding-bottom: 4px; }
+      .calc .per .per-main { font-size: 1.05rem; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; color: #fff3cf; }
+      .calc .per .per-sub { font-size: 0.78rem; color: #a99e7d; font-weight: 600; }
+      .calc-result {
+        margin-top: 15px; background: rgba(245,197,66,0.09);
+        border: 1px solid rgba(245,197,66,0.45); border-radius: 9px;
+        padding: 13px 16px; display: flex; align-items: baseline; gap: 10px;
+      }
+      .calc-result .eq { font-size: 1.3rem; font-weight: 700; color: #a99e7d; }
+      .calc-result .total { font-size: 1.52rem; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; color: var(--gold-bright); }
+      .calc-result .unit { font-weight: 700; color: #cfc096; }
+      .calc-note { margin: 10px 2px 0; font-size: 0.85rem; color: #a99e7d; }
+
+      .buy-actions { margin-top: 19px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .btn {
+        position: relative; overflow: hidden; isolation: isolate;
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        font: inherit; font-weight: 700; font-size: 0.95rem;
+        text-decoration: none; border-radius: 8px; padding: 13px 10px;
+        border: 1px solid rgba(255,255,255,0.22); cursor: pointer; text-align: center;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+        transition: box-shadow .35s ease, border-color .35s ease;
+      }
+      .btn-zalo { --sweep: linear-gradient(90deg, #0047b8 0%, #0068ff 55%, #2f8bff 100%); background: linear-gradient(180deg, #1a7bff, #0057d6); color: #fff; }
+      .btn-fb { --sweep: linear-gradient(90deg, #0d55b4 0%, #1877f2 55%, #3d94ff 100%); background: linear-gradient(180deg, #2b8bff, #1463cc); color: #fff; }
+      /* Lớp màu thương hiệu quét từ trái sang phải khi hover / chạm / focus */
+      .btn::before {
+        content: ""; position: absolute; inset: 0; z-index: -1;
+        background: var(--sweep);
+        transform: scaleX(0); transform-origin: left center;
+        transition: transform .42s cubic-bezier(.22,.61,.36,1);
+      }
+      .btn::after {
+        content: ""; position: absolute; top: 0; bottom: 0; left: -75%; width: 55%;
+        background: linear-gradient(105deg, transparent, rgba(255,255,255,0.32), transparent);
+        transform: skewX(-18deg); pointer-events: none;
+        transition: left .55s ease;
+      }
+      .btn:hover::before, .btn:focus-visible::before, .btn:active::before { transform: scaleX(1); }
+      .btn:hover::after, .btn:focus-visible::after, .btn:active::after { left: 115%; }
+      .btn:hover, .btn:focus-visible, .btn:active {
+        border-color: rgba(255,255,255,0.55);
+        box-shadow: 0 8px 22px rgba(0,0,0,0.5), 0 0 18px rgba(80,160,255,0.35);
+      }
+      .btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+      .btn svg { width: 19px; height: 19px; flex: none; position: relative; z-index: 1; }
+      .btn-label { position: relative; z-index: 1; }
+      /* Logo khổng lồ tràn vào từ bên phải khi hover — giống ảnh mẫu Zalo */
+      .btn-wm {
+        position: absolute; top: 50%; right: -4px; z-index: 0;
+        transform: translate(58%, -50%) scale(0.92) rotate(-3deg);
+        opacity: 0; pointer-events: none; white-space: nowrap;
+        color: rgba(255,255,255,0.95); font-weight: 700; line-height: 1;
+        letter-spacing: -0.03em;
+        transition: transform .48s cubic-bezier(.22,.61,.36,1), opacity .32s ease;
+        user-select: none;
+      }
+      .btn-zalo .btn-wm { font-size: 3.6rem; }
+      .btn-fb .btn-wm { right: -14px; }
+      .btn-fb .btn-wm svg { width: 96px; height: 96px; display: block; }
+      .btn:hover .btn-wm, .btn:focus-visible .btn-wm, .btn:active .btn-wm {
+        opacity: 0.30; transform: translate(0, -50%) scale(1) rotate(-3deg);
+      }
+      .btn-zalo:hover .btn-wm, .btn-zalo:focus-visible .btn-wm, .btn-zalo:active .btn-wm { opacity: 0.38; }
+      .btn-fb:hover .btn-wm, .btn-fb:focus-visible .btn-wm, .btn-fb:active .btn-wm { opacity: 0.28; }
+
+      /* Faction war bar */
+      .war-bar {
+        margin-top: 26px;
+        display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch;
+        border-radius: 10px 10px 0 0; overflow: hidden;
+        border: 1px solid rgba(245,197,66,0.5); border-bottom: none;
+        box-shadow: 0 -10px 34px rgba(0,0,0,0.5);
+      }
+      .war-side { padding: 15px 20px; color: #fff; }
+      .war-side h3 { margin: 0; font-family: var(--display); font-weight: 600; font-size: 1.15rem; letter-spacing: 0.035em; }
+      .war-side p { margin: 3px 0 0; font-size: 0.84rem; opacity: 0.92; }
+      .war-a { background: linear-gradient(100deg, #0b2c57, #1c5da8 70%, #2c74c4); text-align: right; }
+      .war-h { background: linear-gradient(260deg, #4d0d04, #a32412 70%, #c23a1e); }
+      .war-vs {
+        display: flex; align-items: center; justify-content: center;
+        background: #0b0d16; color: var(--gold-bright);
+        font-family: var(--display); font-weight: 700; font-size: 1.02rem;
+        padding: 0 16px; border-left: 1px solid rgba(245,197,66,0.5); border-right: 1px solid rgba(245,197,66,0.5);
+      }
+      .capital-btn {
+        margin-top: 10px; display: inline-block; font: inherit; cursor: pointer;
+        background: rgba(0,0,0,0.35); color: #fff; border: 1px solid rgba(255,255,255,0.55);
+        border-radius: 999px; padding: 6px 14px; font-size: 0.8rem; font-weight: 700;
+      }
+      .capital-btn:hover { background: rgba(0,0,0,0.55); border-color: var(--gold-bright); color: var(--gold-bright); }
+
+      /* ---------- Sections ---------- */
+      section.block { padding: 54px 0 6px; }
+      .sec-kicker {
+        font-family: var(--sans); letter-spacing: 0.16em; text-transform: uppercase;
+        color: var(--gold-deep); font-size: 0.72rem; font-weight: 700; margin: 0 0 7px;
+      }
+      @media (prefers-color-scheme: dark) { .sec-kicker { color: var(--gold); } }
+      .block h2.sec-title { font-family: var(--display); font-size: clamp(1.5rem, 3.4vw, 1.95rem); font-weight: 600; letter-spacing: 0.01em; margin: 0 0 7px; line-height: 1.32; }
+      .block p.sec-sub { margin: 0 0 23px; color: var(--ink-soft); max-width: 46rem; }
+
+      /* Capitals */
+      .capitals { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .capital {
+        position: relative; border-radius: 12px; overflow: hidden; min-height: 290px;
+        display: flex; align-items: flex-end; text-decoration: none; color: #fff;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+      .capital img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+      .capital:hover img.bg { transform: scale(1.04); }
+      .capital .shade { position: absolute; inset: 0; background: linear-gradient(185deg, transparent 32%, rgba(4,5,10,0.88) 82%); }
+      .capital-a .shade { box-shadow: inset 0 -90px 70px -30px rgba(20,80,160,0.55); }
+      .capital-h .shade { box-shadow: inset 0 -90px 70px -30px rgba(180,50,20,0.55); }
+      .capital .cap-in { position: relative; padding: 20px 22px; }
+      .capital .cap-tag { font-family: var(--sans); letter-spacing: 0.16em; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+      .capital-a .cap-tag { color: #8ec2ff; } .capital-h .cap-tag { color: #ffb09e; }
+      .capital h3 { margin: 4px 0 5px; font-family: var(--display); font-weight: 600; font-size: 1.62rem; letter-spacing: 0.02em; text-shadow: 0 3px 12px rgba(0,0,0,0.8); }
+      .capital p { margin: 0; font-size: 0.92rem; color: #ece5cb; max-width: 26rem; }
+      .capital .cap-cta { margin-top: 11px; display: inline-block; font-weight: 800; font-size: 0.85rem; color: var(--gold-bright); }
+
+      /* Heroes banner */
+      .heroes-banner {
+        margin-top: 54px; position: relative; border-radius: 12px; overflow: hidden;
+        border: 1px solid var(--line); box-shadow: var(--shadow);
+      }
+      .heroes-banner img { width: 100%; height: 250px; object-fit: cover; object-position: center 30%; }
+      .heroes-banner .hb-in {
+        position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        text-align: center; padding: 20px; background: linear-gradient(90deg, rgba(5,6,12,0.55), rgba(5,6,12,0.18) 50%, rgba(5,6,12,0.55));
+      }
+      .heroes-banner blockquote {
+        margin: 0; font-family: var(--display); font-weight: 600;
+        font-size: clamp(1.25rem, 4vw, 1.95rem); color: #fff7d6; letter-spacing: 0.02em; line-height: 1.35;
+        text-shadow: 0 3px 16px rgba(0,0,0,0.95);
+      }
+      .heroes-banner p { margin: 8px 0 0; color: #f0e7c6; font-size: 0.94rem; text-shadow: 0 2px 10px rgba(0,0,0,0.95); }
+
+      /* Legacy chronicle */
+      .legacy { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 16px; align-items: stretch; }
+      .legacy-img { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); min-height: 320px; }
+      .legacy-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .legacy-img .li-cap {
+        position: absolute; left: 0; right: 0; bottom: 0; padding: 34px 20px 16px; color: #fff;
+        background: linear-gradient(180deg, transparent, rgba(5,3,0,0.9));
+      }
+      .legacy-img .li-cap b { font-family: var(--display); font-weight: 600; letter-spacing: 0.03em; font-size: 1.06rem; color: #ffd9a0; display: block; }
+      .legacy-img .li-cap span { font-size: 0.87rem; color: #f3e9cd; }
+      .chronicle {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 22px 24px;
+      }
+      .chronicle ul { margin: 0; padding: 0; list-style: none; }
+      .chronicle li { padding: 11px 0; display: flex; gap: 13px; }
+      .chronicle li + li { border-top: 1px dashed var(--line); }
+      .chronicle .gem { flex: none; width: 11px; height: 11px; margin-top: 6px; transform: rotate(45deg); background: var(--gold); box-shadow: 0 0 0 2px rgba(185,126,14,0.3); }
+      .chronicle h3 { margin: 0; font-size: 0.99rem; }
+      .chronicle p { margin: 2px 0 0; color: var(--ink-soft); font-size: 0.9rem; }
+      /* Rate table */
+      .rate-table-wrap {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        overflow: hidden; box-shadow: var(--shadow);
+      }
+      table.rate-table { width: 100%; border-collapse: collapse; }
+      .rate-table th, .rate-table td { padding: 14px 16px; text-align: left; }
+      .rate-table thead th {
+        background: var(--stone); color: #e9dfbe;
+        font-size: 0.8rem; letter-spacing: 0.07em; text-transform: uppercase;
+        border-bottom: 2px solid var(--gold-deep);
+      }
+      .rate-table thead th.th-a { color: #8ec2ff; } .rate-table thead th.th-h { color: #ffb09e; }
+      .rate-table tbody tr + tr td { border-top: 1px solid var(--line); }
+      .rate-table td.rs { font-weight: 700; }
+      .rate-table td.rs small { display: block; font-weight: 500; color: var(--ink-faint); font-size: 0.78rem; }
+      .rate-table td.cell { font-weight: 700; }
+      .cell .pending { color: var(--ink-faint); font-weight: 600; font-size: 0.9rem; }
+      .cell .val { color: var(--gold-deep); }
+      @media (prefers-color-scheme: dark) { .cell .val { color: var(--gold); } }
+      .rate-table tr.is-active td { background: rgba(245, 197, 66, 0.13); }
+
+      /* Quest steps */
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; list-style: none; margin: 0; padding: 0; }
+      .steps li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; box-shadow: var(--shadow); }
+      .steps .num {
+        width: 36px; height: 36px; transform: rotate(45deg);
+        background: linear-gradient(140deg, var(--gold-bright), var(--gold-deep));
+        border-radius: 7px; display: flex; align-items: center; justify-content: center; margin: 4px 0 15px 4px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      }
+      .steps .num span { transform: rotate(-45deg); font-weight: 700; color: #3d2700; font-family: var(--display); }
+      .steps h3 { margin: 0 0 6px; font-size: 1.02rem; }
+      .steps h3 small { display: block; font-family: var(--sans); font-weight: 700; letter-spacing: 0.12em; font-size: 0.66rem; color: var(--gold-deep); text-transform: uppercase; margin-bottom: 3px; }
+      @media (prefers-color-scheme: dark) { .steps h3 small { color: var(--gold); } }
+      .steps p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
+
+      /* Social */
+      .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .social-card {
+        --brand: #1877f2;
+        position: relative; overflow: hidden; isolation: isolate;
+        display: flex; align-items: center; gap: 14px;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 18px 20px; text-decoration: none;
+        transition: border-color .3s ease, transform .2s ease, box-shadow .35s ease;
+      }
+      .brand-fb { --brand: #1877f2; }
+      .brand-zalo { --brand: #0068ff; }
+      .brand-discord { --brand: #5865f2; }
+      /* Lớp màu thương hiệu tràn từ ô icon bên trái phủ kín thẻ khi hover / chạm / focus */
+      .social-card::before {
+        content: ""; position: absolute; inset: 0; z-index: 0;
+        background: var(--brand);
+        transform: scaleX(0); transform-origin: left center;
+        transition: transform .42s cubic-bezier(.22,.61,.36,1);
+      }
+      .social-card::after {
+        content: ""; position: absolute; top: 0; bottom: 0; left: -75%; width: 45%; z-index: 2;
+        background: linear-gradient(105deg, transparent, rgba(255,255,255,0.22), transparent);
+        transform: skewX(-18deg); pointer-events: none;
+        transition: left .55s ease;
+      }
+      .social-card > * { position: relative; z-index: 1; }
+      .social-card:hover::before, .social-card:focus-visible::before, .social-card:active::before { transform: scaleX(1); }
+      .social-card:hover::after, .social-card:focus-visible::after, .social-card:active::after { left: 115%; }
+      a.social-card:hover, .social-card:focus-visible, a.social-card:active {
+        border-color: var(--brand); transform: translateY(-2px);
+        box-shadow: 0 12px 26px rgba(0,0,0,0.28);
+      }
+      .social-card:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+      .social-ic { width: 46px; height: 46px; flex: none; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; transition: box-shadow .35s ease; }
+      .social-card:hover .social-ic, .social-card:focus-visible .social-ic, .social-card:active .social-ic {
+        box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.55), 0 4px 12px rgba(0,0,0,0.25);
+      }
+      .social-ic svg { width: 24px; height: 24px; }
+      .ic-fb { background: #1877f2; }
+      .ic-zalo { background: var(--zalo); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.02em; }
+      .ic-discord { background: #5865f2; }
+      .social-card h3 { margin: 0; font-size: 1rem; transition: color .3s ease; }
+      .social-card p { margin: 2px 0 0; color: var(--ink-soft); font-size: 0.88rem; transition: color .3s ease; }
+      .social-card:hover h3, .social-card:focus-visible h3, .social-card:active h3 { color: #fff; }
+      .social-card:hover p, .social-card:focus-visible p, .social-card:active p { color: rgba(255,255,255,0.92); }
+      .social-card .go { margin-left: auto; color: var(--ink-faint); font-size: 1.2rem; flex: none; transition: transform .3s ease, color .3s ease; }
+      .social-card:hover .go, .social-card:focus-visible .go, .social-card:active .go { transform: translateX(4px); color: #fff; }
+      .soon-tag { margin-left: auto; flex: none; font-size: 0.75rem; font-weight: 700; color: var(--ink-faint); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; transition: color .3s ease, border-color .3s ease; }
+      .social-card:hover .soon-tag, .social-card:focus-visible .soon-tag, .social-card:active .soon-tag { color: #fff; border-color: rgba(255,255,255,0.65); }
+      .social-card.disabled { opacity: 0.75; }
+      .social-card.disabled:hover { border-color: var(--brand); box-shadow: 0 12px 26px rgba(0,0,0,0.28); }
+      .social-card.disabled:hover h3 { color: #fff; }
+      .social-card.disabled:hover p { color: rgba(255,255,255,0.92); }
+
+      footer {
+        margin-top: 58px; background: #0a0c14; color: #a99e7d;
+        border-top: 2px solid var(--gold-deep);
+        padding: 26px 0 92px; font-size: 0.86rem; text-align: center;
+      }
+      footer .f-display { font-family: var(--sans); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #e9dfbe; font-size: 0.78rem; margin-bottom: 6px; }
+      footer .f-display .blue { color: #7db9f5; } footer .f-display .red { color: #ff9a86; }
+
+      .zalo-float {
+        position: fixed; right: 18px; bottom: 18px; width: 58px; height: 58px;
+        border-radius: 50%; overflow: hidden;
+        box-shadow: 0 10px 26px rgba(0,0,0,0.4); border: 2px solid var(--gold);
+        z-index: 50; background: #101b3a;
+      }
+      .zalo-float img { width: 100%; height: 100%; object-fit: cover; }
+
+      @media (max-width: 920px) {
+        .hero-grid { grid-template-columns: 1fr; }
+        .legacy { grid-template-columns: 1fr; }
+        .legacy-img { min-height: 250px; }
+      }
+      @media (max-width: 700px) {
+        .hero-bg { object-position: 74% 38%; }
+        .hero::before {
+          background:
+            linear-gradient(180deg, rgba(5,6,12,0.55) 0%, rgba(5,6,12,0.18) 30%, rgba(5,6,12,0.55) 68%, #080a12 100%),
+            radial-gradient(800px 420px at 50% 8%, transparent 40%, rgba(5,6,12,0.25) 100%);
+        }
+        .capitals, .social-grid, .steps { grid-template-columns: 1fr; }
+        .seg-ruleset { grid-template-columns: repeat(2, 1fr); }
+        .war-bar { grid-template-columns: 1fr; }
+        .war-a { text-align: left; }
+        .war-vs { padding: 7px; border: none; border-top: 1px solid rgba(245,197,66,0.5); border-bottom: 1px solid rgba(245,197,66,0.5); }
+        .heroes-banner img { height: 210px; }
+        .rate-table th, .rate-table td { padding: 12px 10px; font-size: 0.9rem; }
+        .buy-actions { grid-template-columns: 1fr 1fr; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .social-card, .capital img.bg, .seg button, .btn, .btn-wm,
+        .seg button::before, .seg button::after,
+        .social-card::before, .social-card::after, .btn::before, .btn::after,
+        .social-card h3, .social-card p, .social-card .go, .social-ic, .soon-tag { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="war-strip">
+      <span class="war-slogan" aria-hidden="true"><span class="blue">For the Alliance!</span><span class="sep">◆</span><span data-i18n="war_call">Azeroth đang gọi</span><span class="sep">◆</span><span class="red">Lok'tar Ogar!</span></span>
+      <div class="lang-switch" role="group" aria-label="Language / Ngôn ngữ">
+        <span class="lang-label" data-i18n="lang_label">Ngôn ngữ</span>
+        <button type="button" class="lang-btn is-active" data-set-lang="vi" aria-pressed="true">VI</button>
+        <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+
+    <!-- ================= HERO + THU MUA ================= -->
+    <header class="hero">
+      <img class="hero-bg" src="assets/hero-darkportal.webp" alt="" aria-hidden="true" />
+      <div class="wrap hero-inner">
+        <div class="hero-top">
+          <h1><span class="game-name">World of Warcraft</span> <span class="forever">— Forever —</span></h1>
+          <p class="hero-slogan" data-i18n="hero_slogan">Đam mê đủ lớn <span class="slogan-sep" aria-hidden="true">◆</span> Anh em đủ chất</p>
+          <p class="hero-lede" data-i18n="hero_lede">Azeroth đang gọi tên anh hùng — dù bạn đứng về <strong>Alliance</strong> hay <strong>Horde</strong>, dư Gold cứ mang qua <strong>GegeTeam — Nhà Cáo</strong>: thu mua tận tâm, trả <strong>USDT</strong> thẳng về ví.</p>
+        </div>
+
+        <div class="hero-grid">
+          <div class="lore-panel">
+            <div class="lore-head">
+              <img src="assets/logo.png" alt="Logo GegeTeam — Nhà Cáo" width="96" height="96" />
+              <div>
+                <h2 data-i18n="lore_title">Nhà Cáo đồng hành cùng <span>anh hùng Azeroth</span></h2>
+                <p data-i18n="lore_sub">GegeTeam — team game thủ tâm huyết, đứng thu mua Gold ngay tại cổng thành của cả hai phe.</p>
+              </div>
+            </div>
+            <p class="lore-quote" data-i18n="lore_quote">“Gold ở Azeroth chưa bao giờ dễ kiếm — farm cả tuần mới đầy túi. Dư Gold, cứ mang qua Nhà Cáo.”</p>
+            <ul class="rune-stats">
+              <li><b>LEVEL 60</b><span data-i18n="stat_level_desc">Cap cố định của WoW Forever</span></li>
+              <li><b data-i18n="stat_ruleset_val">4 RULESET</b><span data-i18n="stat_ruleset_desc">Normal · PvP · Roleplaying · RP-PvP</span></li>
+              <li><b data-i18n="stat_class_val">9 CLASS</b><span data-i18n="stat_class_desc">Số class trong WoW Forever</span></li>
+              <li><b data-i18n="stat_faction_val">2 PHE ĐỐI ĐẦU</b><span data-i18n="stat_faction_desc">Alliance &amp; Horde — Gold tách riêng từng phe</span></li>
+            </ul>
+            <p class="lore-foot" data-i18n="lore_foot">Hai phe Alliance &amp; Horde đối đầu trên đất Azeroth — Gold của mỗi phe tách riêng, không chuyển qua lại được giữa hai phe, nên Nhà Cáo thu mua tách riêng cho từng phe.</p>
+          </div>
+
+          <div class="buy-card" id="thu-mua">
+            <h2><span class="coin" aria-hidden="true">G</span> <span data-i18n="buy_title">Thu mua <em>Gold</em> WoW Forever</span></h2>
+            <p class="buy-sub" data-i18n="buy_sub">Chọn <strong>ruleset</strong> và <strong>faction</strong> của nhân vật bạn đang chơi để xem rate và tính số USDT nhận được.</p>
+
+            <p class="pick-label" id="lbl-ruleset" data-i18n="pick_ruleset">Ruleset — kiểu thế giới bạn đang chơi</p>
+            <div class="seg seg-ruleset" role="group" aria-labelledby="lbl-ruleset" id="rulesetSeg">
+              <button type="button" data-ruleset="normal" aria-pressed="true">Normal</button>
+              <button type="button" data-ruleset="pvp" aria-pressed="false">PvP</button>
+              <button type="button" data-ruleset="roleplaying" aria-pressed="false">Roleplaying</button>
+              <button type="button" data-ruleset="rp-pvp" aria-pressed="false">RP-PvP</button>
+            </div>
+
+            <p class="pick-label" id="lbl-faction" data-i18n="pick_faction">Faction — phe của bạn</p>
+            <div class="seg seg-faction" role="group" aria-labelledby="lbl-faction" id="factionSeg">
+              <button type="button" data-faction="alliance" aria-pressed="true">◆ Alliance<small>For the Alliance! · Stormwind</small></button>
+              <button type="button" data-faction="horde" aria-pressed="false">◆ Horde<small>Lok'tar ogar! · Orgrimmar</small></button>
+            </div>
+
+            <div class="rate-line">
+              <span class="rl-label" data-i18n="rate_label">Rate hiện tại</span>
+              <span class="rate-value pending" id="rateValue" data-i18n="rate_pending">Đang cập nhật</span>
+            </div>
+
+            <div class="calc">
+              <div class="qty">
+                <label for="qtyInput" data-i18n="qty_label">Số Gold muốn bán</label>
+                <input id="qtyInput" type="text" inputmode="decimal" autocomplete="off" placeholder="Nhập số lượng" data-i18n-ph="qty_ph" />
+              </div>
+              <div class="times" aria-hidden="true">×</div>
+              <div class="per">
+                <div class="per-main" id="perMain">— USDT</div>
+                <div class="per-sub">/ 1 Gold</div>
+              </div>
+            </div>
+
+            <div class="calc-result">
+              <span class="eq">=</span>
+              <span class="total" id="totalValue">—</span>
+              <span class="unit">USDT</span>
+            </div>
+            <p class="calc-note" id="calcNote" data-i18n="calc_note_pending">Rate đang được cập nhật — liên hệ team để chốt giá tại thời điểm giao dịch.</p>
+
+            <div class="buy-actions">
+              <a class="btn btn-zalo" href="https://zalo.me/0936854505" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.3.8-1.7 1.6-2.4 1.6-.6.1-1.4.2-4.6-1-3.9-1.6-6.4-5.5-6.6-5.8-.2-.3-1.6-2.1-1.6-4s.9-2.8 1.3-3.2c.4-.4.8-.5 1-.5h.8c.2 0 .6-.1.9.7l1.2 3c.1.2.1.4 0 .7l-.5.8c-.2.2-.3.4-.1.8.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l3 1.4c.3.2.5.3.6.4 0 .1 0 .6-.2 1Z"/></svg>
+                <span class="btn-label" data-i18n="btn_zalo">Liên hệ Zalo</span>
+                <span class="btn-wm" aria-hidden="true">Zalo</span>
+              </a>
+              <a class="btn btn-fb" href="https://www.facebook.com/GegeTeam.net/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.7-1.6h1.5V4.2c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.7H7.8V14h2.7v8h3Z"/></svg>
+                <span class="btn-label" data-i18n="btn_fb">Nhắn Fanpage</span>
+                <span class="btn-wm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.7-1.6h1.5V4.2c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.7H7.8V14h2.7v8h3Z"/></svg></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="war-bar" aria-label="Alliance đối đầu Horde">
+          <div class="war-side war-a">
+            <h3>ALLIANCE</h3>
+            <p data-i18n="war_a_desc">Stormwind · Ironforge · Darnassus — vì vinh quang của Liên Minh!</p>
+            <button type="button" class="capital-btn" data-goto-faction="alliance" data-i18n="war_a_btn">Tôi chơi Alliance → Xem thu mua</button>
+          </div>
+          <div class="war-vs">VS</div>
+          <div class="war-side war-h">
+            <h3>HORDE</h3>
+            <p data-i18n="war_h_desc">Orgrimmar · Thunder Bluff · Undercity — máu và sấm sét!</p>
+            <button type="button" class="capital-btn" data-goto-faction="horde" data-i18n="war_h_btn">Tôi chơi Horde → Xem thu mua</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <!-- ================= THỦ ĐÔ HAI PHE ================= -->
+      <section class="block" id="thu-do">
+        <p class="sec-kicker">Kalimdor ◆ Eastern Kingdoms</p>
+        <h2 class="sec-title" data-i18n="cap_title">Hai thủ đô, hai niềm tự hào</h2>
+        <p class="sec-sub" data-i18n="cap_sub">Dù bạn đứng dưới cổng Stormwind hay giữa thung lũng Orgrimmar, Nhà Cáo đều có mặt thu mua Gold — rate tách riêng cho từng phe vì Gold Alliance và Horde không chuyển qua lại được.</p>
+        <div class="capitals">
+          <article class="capital capital-a">
+            <img class="bg" src="assets/stormwind.jpg" alt="Thành Stormwind — thủ đô của Alliance trong World of Warcraft" data-i18n-alt="alt_stormwind" loading="lazy" />
+            <span class="shade" aria-hidden="true"></span>
+            <div class="cap-in">
+              <span class="cap-tag">Alliance · Eastern Kingdoms</span>
+              <h3>STORMWIND</h3>
+              <p data-i18n="cap_a_desc">Thủ đô của loài người và là trái tim của Alliance ở Eastern Kingdoms.</p>
+              <button type="button" class="capital-btn" data-goto-faction="alliance" data-i18n="cap_a_btn">Bán Gold Alliance →</button>
+            </div>
+          </article>
+          <article class="capital capital-h">
+            <img class="bg" src="assets/orgrimmar.jpg" alt="Thành Orgrimmar — thủ đô của Horde trong World of Warcraft" data-i18n-alt="alt_orgrimmar" loading="lazy" />
+            <span class="shade" aria-hidden="true"></span>
+            <div class="cap-in">
+              <span class="cap-tag">Horde · Kalimdor</span>
+              <h3>ORGRIMMAR</h3>
+              <p data-i18n="cap_h_desc">Pháo đài của Horde giữa lòng Durotar, Kalimdor — điểm hẹn của mọi chiến binh Horde.</p>
+              <button type="button" class="capital-btn" data-goto-faction="horde" data-i18n="cap_h_btn">Bán Gold Horde →</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="heroes-banner">
+          <img src="assets/heroes-banner.jpg" alt="Các anh hùng Alliance và Horde trong World of Warcraft" loading="lazy" />
+          <div class="hb-in">
+            <blockquote>“FOR THE HORDE! — FOR THE ALLIANCE!”</blockquote>
+            <p data-i18n="heroes_desc">Hai phe, một Azeroth. Phe nào cũng có Gold — và Nhà Cáo thu mua cả hai.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= HỒI ỨC AZEROTH ================= -->
+      <section class="block" id="hoi-uc">
+        <p class="sec-kicker">World of Warcraft ◆ Azeroth</p>
+        <h2 class="sec-title" data-i18n="legacy_title">Hồi ức Azeroth — vì sao Forever đáng quay lại?</h2>
+        <p class="sec-sub" data-i18n="legacy_sub">WoW Forever là phiên bản World of Warcraft mới của Blizzard: cap level 60, hai phe Alliance và Horde, và một Azeroth nơi mỗi đồng Gold đều do chính tay người chơi cày nên — vì thế Gold mới có giá.</p>
+        <div class="legacy">
+          <div class="legacy-img">
+            <img src="assets/moltencore.jpg" alt="Ragnaros — trùm lửa huyền thoại của raid Molten Core" loading="lazy" />
+            <div class="li-cap">
+              <b>MOLTEN CORE — RAGNAROS</b>
+              <span data-i18n="legacy_cap_desc">Ragnaros, Chúa Tể Lửa của Molten Core — biểu tượng raid huyền thoại đã làm nên tên tuổi World of Warcraft. “By fire be purged!”</span>
+            </div>
+          </div>
+          <div class="chronicle">
+            <ul>
+              <li><span class="gem" aria-hidden="true"></span><div><h3 data-i18n="chr1_title">Cap level 60</h3><p data-i18n="chr1_desc">Mức cấp tối đa của WoW Forever là 60 — hành trình lên cấp là một phần của trải nghiệm, như những ngày đầu của World of Warcraft.</p></div></li>
+              <li><span class="gem" aria-hidden="true"></span><div><h3 data-i18n="chr2_title">Bốn ruleset, bốn lối chơi</h3><p data-i18n="chr2_desc">Normal, PvP, Roleplaying và RP-PvP — mỗi ruleset là một thế giới riêng, Gold tách riêng theo từng ruleset và từng phe.</p></div></li>
+              <li><span class="gem" aria-hidden="true"></span><div><h3 data-i18n="chr3_title">Alliance vs Horde — Gold tách riêng từng phe</h3><p data-i18n="chr3_desc">Gold của Alliance và Gold của Horde là hai thị trường riêng, không chuyển qua lại được giữa hai phe. Vì vậy Nhà Cáo báo rate và thu mua tách riêng cho từng faction.</p></div></li>
+              <li><span class="gem" aria-hidden="true"></span><div><h3 data-i18n="chr4_title">Gold do người chơi cày nên Gold có giá</h3><p data-i18n="chr4_desc">Mỗi đồng Gold trong game đều đến từ công sức farm của người chơi. Dư Gold, bán cho Nhà Cáo lấy USDT về ví — nhanh và trực tiếp với team.</p></div></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= BẢNG RATE ================= -->
+      <section class="block" id="bang-rate">
+        <p class="sec-kicker" data-i18n="rate_kicker">Bảng rate thu mua</p>
+        <h2 class="sec-title" data-i18n="rate_title">Rate theo Ruleset &amp; Faction</h2>
+        <p class="sec-sub" data-i18n="rate_sub">Rate tính riêng cho từng ruleset và từng faction — đúng như cách Azeroth vận hành: mỗi thế giới, mỗi phe là một thị trường riêng. Thanh toán 100% qua ví USDT.</p>
+        <div class="rate-table-wrap">
+          <table class="rate-table">
+            <thead>
+              <tr>
+                <th scope="col">Ruleset</th>
+                <th scope="col" class="th-a"><span class="faction-dot dot-a"></span>Alliance</th>
+                <th scope="col" class="th-h"><span class="faction-dot dot-h"></span>Horde</th>
+              </tr>
+            </thead>
+            <tbody id="rateBody">
+              <tr data-row="normal">
+                <td class="rs">Normal<small data-i18n="rs_normal_desc">Thế giới tiêu chuẩn</small></td>
+                <td class="cell" data-ruleset="normal" data-faction="alliance"><span class="pending" data-i18n="rate_pending">Đang cập nhật</span></td>
+                <td class="cell" data-ruleset="normal" data-faction="horde"><span class="pending" data-i18n="rate_pending">Đang cập nhật</span></td>
+              </tr>
+              <tr data-row="pvp">
+                <td class="rs">PvP<small data-i18n="rs_pvp_desc">Chiến tranh giữa hai phe</small></td>
+                <td class="cell" data-ruleset="pvp" data-faction="alliance"><span class="pending" data-i18n="rate_pending">Đang cập nhật</span></td>
+                <td class="cell" data-ruleset="pvp" data-faction="horde"><span class="pending" data-i18n="rate_pending">Đang cập nhật</span></td>
+              </tr>
+              <tr data-row="roleplaying">
+                <td class="rs">Roleplaying<small data-i18n="rs_rp_desc">Nhập vai sống trong Azeroth</small></td>
+                <td class="cell" data-ruleset="roleplaying" data-faction="alliance"><span class="pending" data-i18n="rate_pending">Đang cập nhật</span></td>
+                <td class="cell" data-ruleset="roleplaying" data-faction="horde"><span class="pending" data-i18n="rate_pending">Đang cập nhật</span></td>
+              </tr>
+              <tr data-row="rp-pvp">
+                <td class="rs">RP-PvP<small data-i18n="rs_rppvp_desc">Nhập vai + chiến tranh hai phe</small></td>
+                <td class="cell" data-ruleset="rp-pvp" data-faction="alliance"><span class="pending" data-i18n="rate_pending">Đang cập nhật</span></td>
+                <td class="cell" data-ruleset="rp-pvp" data-faction="horde"><span class="pending" data-i18n="rate_pending">Đang cập nhật</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= QUY TRÌNH ================= -->
+      <section class="block" id="quy-trinh">
+        <p class="sec-kicker" data-i18n="quest_kicker">Quest: Bán Gold cho Nhà Cáo</p>
+        <h2 class="sec-title" data-i18n="quest_title">Hoàn thành quest trong 3 bước</h2>
+        <p class="sec-sub" data-i18n="quest_sub">Giao dịch trực tiếp với GegeTeam — trang này không nhận tiền, team chốt giá và thanh toán với bạn qua tin nhắn, như nhận và trả quest trong game.</p>
+        <ol class="steps">
+          <li>
+            <div class="num"><span>!</span></div>
+            <h3><small data-i18n="step1_label">Bước 1 · Nhận quest</small><span data-i18n="step1_title">Liên hệ Nhà Cáo</span></h3>
+            <p data-i18n="step1_desc">Nhắn Zalo hoặc Fanpage, báo ruleset, faction và số Gold bạn muốn bán để chốt rate.</p>
+          </li>
+          <li>
+            <div class="num"><span>2</span></div>
+            <h3><small data-i18n="step2_label">Bước 2 · Tới điểm hẹn</small><span data-i18n="step2_title">Giao Gold trong game</span></h3>
+            <p data-i18n="step2_desc">Team hướng dẫn điểm hẹn và nhân vật nhận Gold ngay trong WoW Forever — Stormwind, Orgrimmar hay điểm trung lập như team hẹn.</p>
+          </li>
+          <li>
+            <div class="num"><span>3</span></div>
+            <h3><small data-i18n="step3_label">Bước 3 · Nhận thưởng</small><span data-i18n="step3_title">USDT về ví của bạn</span></h3>
+            <p data-i18n="step3_desc">Gold giao xong, team chuyển USDT thẳng vào ví bạn cung cấp. Nhanh, gọn, rõ ràng — quest hoàn thành!</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ================= MẠNG XÃ HỘI ================= -->
+      <section class="block" id="mang-xa-hoi">
+        <p class="sec-kicker" data-i18n="social_kicker">Hearthstone về Nhà Cáo</p>
+        <h2 class="sec-title" data-i18n="social_title">Kết nối với GegeTeam</h2>
+        <p class="sec-sub" data-i18n="social_sub">Theo dõi Nhà Cáo để cập nhật rate mới nhất, sự kiện WoW Forever và hoạt động cộng đồng của team.</p>
+        <div class="social-grid">
+          <a class="social-card brand-fb" href="https://www.facebook.com/GegeTeam.net/" target="_blank" rel="noopener">
+            <span class="social-ic ic-fb">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.7-1.6h1.5V4.2c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.7H7.8V14h2.7v8h3Z"/></svg>
+            </span>
+            <span>
+              <h3 data-i18n="soc_fp_title">Fanpage GegeTeam</h3>
+              <p data-i18n="soc_fp_desc">Cập nhật rate và thông báo mới nhất từ team</p>
+            </span>
+            <span class="go" aria-hidden="true">›</span>
+          </a>
+          <a class="social-card brand-fb" href="https://www.facebook.com/groups/457999664580741" target="_blank" rel="noopener">
+            <span class="social-ic ic-fb">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 11.3c.6-.3 1-1 1-1.8A2.6 2.6 0 0 0 15 7c-.4 0-.8.1-1.1.3A3.6 3.6 0 0 0 12 6.5a3.6 3.6 0 0 0-3.6 3.6c0 .3 0 .6.1.8A5.5 5.5 0 0 0 5.5 15H5a2 2 0 0 0-2 2v1h18v-1a2 2 0 0 0-2-2h-.5a5.5 5.5 0 0 0-2-3.7ZM12 8.3a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6ZM8.2 12c1 .7 2.3 1 3.8 1s2.8-.3 3.8-1a3.7 3.7 0 0 1 1.4 2.9H6.8A3.7 3.7 0 0 1 8.2 12Z"/></svg>
+            </span>
+            <span>
+              <h3 data-i18n="soc_fbg_title">Group Facebook</h3>
+              <p data-i18n="soc_fbg_desc">Cộng đồng người chơi của GegeTeam</p>
+            </span>
+            <span class="go" aria-hidden="true">›</span>
+          </a>
+          <a class="social-card brand-zalo" href="https://zalo.me/g/kmxfzujpa7akgrijn5hk" target="_blank" rel="noopener">
+            <span class="social-ic ic-zalo" aria-hidden="true">Zalo</span>
+            <span>
+              <h3 data-i18n="soc_zg_title">Group Zalo</h3>
+              <p data-i18n="soc_zg_desc">Nhóm chat cộng đồng, hỗ trợ nhanh mỗi ngày</p>
+            </span>
+            <span class="go" aria-hidden="true">›</span>
+          </a>
+          <a class="social-card brand-zalo" href="https://zalo.me/0936854505" target="_blank" rel="noopener">
+            <span class="social-ic ic-zalo" aria-hidden="true">Zalo</span>
+            <span>
+              <h3 data-i18n="soc_za_title">Zalo Admin</h3>
+              <p data-i18n="soc_za_desc">Nhắn trực tiếp admin để chốt giao dịch</p>
+            </span>
+            <span class="go" aria-hidden="true">›</span>
+          </a>
+          <div class="social-card brand-discord disabled" aria-disabled="true">
+            <span class="social-ic ic-discord">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.6 5.3A16 16 0 0 0 15.6 4l-.5 1a13.3 13.3 0 0 1 3.9 2A12.7 12.7 0 0 0 12 5.5 12.7 12.7 0 0 0 5 7.1a13.3 13.3 0 0 1 3.9-2L8.4 4a16 16 0 0 0-4 1.3A17 17 0 0 0 1.6 18a16 16 0 0 0 4.9 2.5l1-1.6a10 10 0 0 1-1.6-.8l.4-.3a11.8 11.8 0 0 0 11.4 0l.4.3c-.5.3-1 .6-1.6.8l1 1.6a16 16 0 0 0 4.9-2.5 17 17 0 0 0-2.8-12.7ZM8.7 15.3c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.9 2.1-1.9 2.1Zm6.6 0c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.9 2.1-1.9 2.1Z"/></svg>
+            </span>
+            <span>
+              <h3 data-i18n="soc_dc_title">Discord GegeTeam</h3>
+              <p data-i18n="soc_dc_desc">Kênh Discord của team</p>
+            </span>
+            <span class="soon-tag" data-i18n="soon_tag">Sắp ra mắt</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p class="f-display"><span class="blue">For the Alliance!</span> ◆ GegeTeam — Nhà Cáo ◆ <span class="red">Lok'tar Ogar!</span></p>
+        <span data-i18n="footer_text">Thu mua Gold WoW Forever — World of Warcraft: Forever của Blizzard · Thanh toán qua ví USDT.</span>
+      </div>
+    </footer>
+
+    <a class="zalo-float" href="https://zalo.me/0936854505" target="_blank" rel="noopener" aria-label="Chat Zalo với admin GegeTeam" data-i18n-aria="float_aria">
+      <img src="assets/fox-support.png" alt="" width="256" height="256" />
+    </a>
+
+    <script>
+
+      /* ---------- LANGUAGE: VI (default) / EN ---------- */
+      var I18N = {
+        vi: {
+          doc_title: "GegeTeam — Thu mua Gold WoW Forever | World of Warcraft: Forever",
+          lang_label: "Ngôn ngữ",
+          war_call: "Azeroth đang gọi",
+          hero_slogan: "Đam mê đủ lớn <span class=\"slogan-sep\" aria-hidden=\"true\">◆</span> Anh em đủ chất",
+          hero_lede: "Azeroth đang gọi tên anh hùng — dù bạn đứng về <strong>Alliance</strong> hay <strong>Horde</strong>, dư Gold cứ mang qua <strong>GegeTeam — Nhà Cáo</strong>: thu mua tận tâm, trả <strong>USDT</strong> thẳng về ví.",
+          lore_title: "Nhà Cáo đồng hành cùng <span>anh hùng Azeroth</span>",
+          lore_sub: "GegeTeam — team game thủ tâm huyết, đứng thu mua Gold ngay tại cổng thành của cả hai phe.",
+          lore_quote: "“Gold ở Azeroth chưa bao giờ dễ kiếm — farm cả tuần mới đầy túi. Dư Gold, cứ mang qua Nhà Cáo.”",
+          stat_level_desc: "Cap cố định của WoW Forever",
+          stat_ruleset_val: "4 RULESET",
+          stat_ruleset_desc: "Normal · PvP · Roleplaying · RP-PvP",
+          stat_class_val: "9 CLASS",
+          stat_class_desc: "Số class trong WoW Forever",
+          stat_faction_val: "2 PHE ĐỐI ĐẦU",
+          stat_faction_desc: "Alliance & Horde — Gold tách riêng từng phe",
+          lore_foot: "Hai phe Alliance &amp; Horde đối đầu trên đất Azeroth — Gold của mỗi phe tách riêng, không chuyển qua lại được giữa hai phe, nên Nhà Cáo thu mua tách riêng cho từng phe.",
+          buy_title: "Thu mua <em>Gold</em> WoW Forever",
+          buy_sub: "Chọn <strong>ruleset</strong> và <strong>faction</strong> của nhân vật bạn đang chơi để xem rate và tính số USDT nhận được.",
+          pick_ruleset: "Ruleset — kiểu thế giới bạn đang chơi",
+          pick_faction: "Faction — phe của bạn",
+          rate_label: "Rate hiện tại",
+          rate_pending: "Đang cập nhật",
+          rate_with_value: " USDT / 1 Gold",
+          qty_label: "Số Gold muốn bán",
+          qty_ph: "Nhập số lượng",
+          calc_note_pending: "Rate đang được cập nhật — liên hệ team để chốt giá tại thời điểm giao dịch.",
+          calc_note_live: "Tổng USDT được tính theo rate đang chọn. Team sẽ chốt lại giá khi bạn liên hệ giao dịch.",
+          btn_zalo: "Liên hệ Zalo",
+          btn_fb: "Nhắn Fanpage",
+          war_a_desc: "Stormwind · Ironforge · Darnassus — vì vinh quang của Liên Minh!",
+          war_a_btn: "Tôi chơi Alliance → Xem thu mua",
+          war_h_desc: "Orgrimmar · Thunder Bluff · Undercity — máu và sấm sét!",
+          war_h_btn: "Tôi chơi Horde → Xem thu mua",
+          cap_title: "Hai thủ đô, hai niềm tự hào",
+          cap_sub: "Dù bạn đứng dưới cổng Stormwind hay giữa thung lũng Orgrimmar, Nhà Cáo đều có mặt thu mua Gold — rate tách riêng cho từng phe vì Gold Alliance và Horde không chuyển qua lại được.",
+          cap_a_desc: "Thủ đô của loài người và là trái tim của Alliance ở Eastern Kingdoms.",
+          cap_a_btn: "Bán Gold Alliance →",
+          cap_h_desc: "Pháo đài của Horde giữa lòng Durotar, Kalimdor — điểm hẹn của mọi chiến binh Horde.",
+          cap_h_btn: "Bán Gold Horde →",
+          heroes_desc: "Hai phe, một Azeroth. Phe nào cũng có Gold — và Nhà Cáo thu mua cả hai.",
+          alt_stormwind: "Thành Stormwind — thủ đô của Alliance trong World of Warcraft",
+          alt_orgrimmar: "Thành Orgrimmar — thủ đô của Horde trong World of Warcraft",
+          legacy_title: "Hồi ức Azeroth — vì sao Forever đáng quay lại?",
+          legacy_sub: "WoW Forever là phiên bản World of Warcraft mới của Blizzard: cap level 60, hai phe Alliance và Horde, và một Azeroth nơi mỗi đồng Gold đều do chính tay người chơi cày nên — vì thế Gold mới có giá.",
+          legacy_cap_desc: "Ragnaros, Chúa Tể Lửa của Molten Core — biểu tượng raid huyền thoại đã làm nên tên tuổi World of Warcraft. “By fire be purged!”",
+          chr1_title: "Cap level 60",
+          chr1_desc: "Mức cấp tối đa của WoW Forever là 60 — hành trình lên cấp là một phần của trải nghiệm, như những ngày đầu của World of Warcraft.",
+          chr2_title: "Bốn ruleset, bốn lối chơi",
+          chr2_desc: "Normal, PvP, Roleplaying và RP-PvP — mỗi ruleset là một thế giới riêng, Gold tách riêng theo từng ruleset và từng phe.",
+          chr3_title: "Alliance vs Horde — Gold tách riêng từng phe",
+          chr3_desc: "Gold của Alliance và Gold của Horde là hai thị trường riêng, không chuyển qua lại được giữa hai phe. Vì vậy Nhà Cáo báo rate và thu mua tách riêng cho từng faction.",
+          chr4_title: "Gold do người chơi cày nên Gold có giá",
+          chr4_desc: "Mỗi đồng Gold trong game đều đến từ công sức farm của người chơi. Dư Gold, bán cho Nhà Cáo lấy USDT về ví — nhanh và trực tiếp với team.",
+          rate_kicker: "Bảng rate thu mua",
+          rate_title: "Rate theo Ruleset &amp; Faction",
+          rate_sub: "Rate tính riêng cho từng ruleset và từng faction — đúng như cách Azeroth vận hành: mỗi thế giới, mỗi phe là một thị trường riêng. Thanh toán 100% qua ví USDT.",
+          rs_normal_desc: "Thế giới tiêu chuẩn",
+          rs_pvp_desc: "Chiến tranh giữa hai phe",
+          rs_rp_desc: "Nhập vai sống trong Azeroth",
+          rs_rppvp_desc: "Nhập vai + chiến tranh hai phe",
+          quest_kicker: "Quest: Bán Gold cho Nhà Cáo",
+          quest_title: "Hoàn thành quest trong 3 bước",
+          quest_sub: "Giao dịch trực tiếp với GegeTeam — trang này không nhận tiền, team chốt giá và thanh toán với bạn qua tin nhắn, như nhận và trả quest trong game.",
+          step1_label: "Bước 1 · Nhận quest",
+          step1_title: "Liên hệ Nhà Cáo",
+          step1_desc: "Nhắn Zalo hoặc Fanpage, báo ruleset, faction và số Gold bạn muốn bán để chốt rate.",
+          step2_label: "Bước 2 · Tới điểm hẹn",
+          step2_title: "Giao Gold trong game",
+          step2_desc: "Team hướng dẫn điểm hẹn và nhân vật nhận Gold ngay trong WoW Forever — Stormwind, Orgrimmar hay điểm trung lập như team hẹn.",
+          step3_label: "Bước 3 · Nhận thưởng",
+          step3_title: "USDT về ví của bạn",
+          step3_desc: "Gold giao xong, team chuyển USDT thẳng vào ví bạn cung cấp. Nhanh, gọn, rõ ràng — quest hoàn thành!",
+          social_kicker: "Hearthstone về Nhà Cáo",
+          social_title: "Kết nối với GegeTeam",
+          social_sub: "Theo dõi Nhà Cáo để cập nhật rate mới nhất, sự kiện WoW Forever và hoạt động cộng đồng của team.",
+          soc_fp_title: "Fanpage GegeTeam",
+          soc_fp_desc: "Cập nhật rate và thông báo mới nhất từ team",
+          soc_fbg_title: "Group Facebook",
+          soc_fbg_desc: "Cộng đồng người chơi của GegeTeam",
+          soc_zg_title: "Group Zalo",
+          soc_zg_desc: "Nhóm chat cộng đồng, hỗ trợ nhanh mỗi ngày",
+          soc_za_title: "Zalo Admin",
+          soc_za_desc: "Nhắn trực tiếp admin để chốt giao dịch",
+          soc_dc_title: "Discord GegeTeam",
+          soc_dc_desc: "Kênh Discord của team",
+          soon_tag: "Sắp ra mắt",
+          footer_text: "Thu mua Gold WoW Forever — World of Warcraft: Forever của Blizzard · Thanh toán qua ví USDT.",
+          float_aria: "Chat Zalo với admin GegeTeam"
+        },
+        en: {
+          doc_title: "GegeTeam — We Buy WoW Forever Gold | World of Warcraft: Forever",
+          lang_label: "Language",
+          war_call: "Azeroth is calling",
+          hero_slogan: "Great passion <span class=\"slogan-sep\" aria-hidden=\"true\">◆</span> True brotherhood",
+          hero_lede: "Azeroth is calling its heroes — whether you stand with the <strong>Alliance</strong> or the <strong>Horde</strong>, bring your spare Gold to <strong>GegeTeam — the Fox Den</strong>: dedicated buyers paying <strong>USDT</strong> straight to your wallet.",
+          lore_title: "The Fox Den stands with <span>the heroes of Azeroth</span>",
+          lore_sub: "GegeTeam — a passionate gaming team buying Gold right at the gates of both factions.",
+          lore_quote: "“Gold in Azeroth was never easy to earn — a week of farming just to fill your bags. Got extra Gold? Bring it to the Fox Den.”",
+          stat_level_desc: "The fixed level cap of WoW Forever",
+          stat_ruleset_val: "4 RULESETS",
+          stat_ruleset_desc: "Normal · PvP · Roleplaying · RP-PvP",
+          stat_class_val: "9 CLASSES",
+          stat_class_desc: "Number of classes in WoW Forever",
+          stat_faction_val: "2 RIVAL FACTIONS",
+          stat_faction_desc: "Alliance & Horde — Gold kept separate per faction",
+          lore_foot: "Alliance and Horde clash across Azeroth — each faction's Gold is separate and cannot be transferred between factions, so the Fox Den buys Gold separately for each faction.",
+          buy_title: "We Buy <em>Gold</em> — WoW Forever",
+          buy_sub: "Choose your character's <strong>ruleset</strong> and <strong>faction</strong> to view the rate and calculate how much USDT you will receive.",
+          pick_ruleset: "Ruleset — the realm type you play on",
+          pick_faction: "Faction — your faction",
+          rate_label: "Current rate",
+          rate_pending: "Updating soon",
+          rate_with_value: " USDT / 1 Gold",
+          qty_label: "Amount of Gold to sell",
+          qty_ph: "Enter amount",
+          calc_note_pending: "Rates are being updated — contact the team to lock in the price at the time of your trade.",
+          calc_note_live: "Your USDT total is calculated from the selected rate. The team will confirm the final price when you contact us to trade.",
+          btn_zalo: "Contact on Zalo",
+          btn_fb: "Message Fanpage",
+          war_a_desc: "Stormwind · Ironforge · Darnassus — for the glory of the Alliance!",
+          war_a_btn: "I play Alliance → View buying rates",
+          war_h_desc: "Orgrimmar · Thunder Bluff · Undercity — blood and thunder!",
+          war_h_btn: "I play Horde → View buying rates",
+          cap_title: "Two capitals, two prides",
+          cap_sub: "Whether you stand at the gates of Stormwind or in the heart of Orgrimmar, the Fox Den is there to buy your Gold — with separate rates per faction, since Alliance and Horde Gold cannot be transferred between factions.",
+          cap_a_desc: "Capital of the humans and the heart of the Alliance in the Eastern Kingdoms.",
+          cap_a_btn: "Sell Alliance Gold →",
+          cap_h_desc: "The Horde stronghold in the heart of Durotar, Kalimdor — the gathering place of every Horde warrior.",
+          cap_h_btn: "Sell Horde Gold →",
+          heroes_desc: "Two factions, one Azeroth. Both have Gold — and the Fox Den buys from both.",
+          alt_stormwind: "Stormwind City — capital of the Alliance in World of Warcraft",
+          alt_orgrimmar: "Orgrimmar — capital of the Horde in World of Warcraft",
+          legacy_title: "Memories of Azeroth — why is Forever worth returning to?",
+          legacy_sub: "WoW Forever is Blizzard's new World of Warcraft edition: level cap 60, the two factions Alliance and Horde, and an Azeroth where every piece of Gold is farmed by players themselves — that is what gives Gold its value.",
+          legacy_cap_desc: "Ragnaros, the Firelord of Molten Core — the legendary raid icon that made World of Warcraft famous. “By fire be purged!”",
+          chr1_title: "Level cap 60",
+          chr1_desc: "The maximum level in WoW Forever is 60 — the journey of leveling up is part of the experience, just like in the early days of World of Warcraft.",
+          chr2_title: "Four rulesets, four ways to play",
+          chr2_desc: "Normal, PvP, Roleplaying and RP-PvP — each ruleset is its own world, with Gold kept separate by ruleset and by faction.",
+          chr3_title: "Alliance vs Horde — Gold separate per faction",
+          chr3_desc: "Alliance Gold and Horde Gold are two separate markets and cannot be transferred between factions. That is why the Fox Den quotes rates and buys Gold separately for each faction.",
+          chr4_title: "Player-farmed Gold is valuable Gold",
+          chr4_desc: "Every piece of Gold in the game comes from players' farming effort. Got spare Gold? Sell it to the Fox Den for USDT to your wallet — fast and direct with the team.",
+          rate_kicker: "Gold buying rates",
+          rate_title: "Rates by Ruleset &amp; Faction",
+          rate_sub: "Rates are calculated separately for each ruleset and each faction — just how Azeroth works: every realm and every faction is its own market. Payment is 100% via USDT wallet.",
+          rs_normal_desc: "Standard realm",
+          rs_pvp_desc: "War between the two factions",
+          rs_rp_desc: "Roleplay life in Azeroth",
+          rs_rppvp_desc: "Roleplay + faction war",
+          quest_kicker: "Quest: Sell Gold to the Fox Den",
+          quest_title: "Complete the quest in 3 steps",
+          quest_sub: "Trade directly with GegeTeam — this page does not take payment. The team confirms the price and pays you via chat, just like picking up and turning in a quest in-game.",
+          step1_label: "Step 1 · Accept the quest",
+          step1_title: "Contact the Fox Den",
+          step1_desc: "Message us on Zalo or the Fanpage with your ruleset, faction, and the amount of Gold you want to sell to lock in the rate.",
+          step2_label: "Step 2 · Go to the meeting point",
+          step2_title: "Hand over Gold in-game",
+          step2_desc: "The team will guide you to the meeting point and the character receiving your Gold inside WoW Forever — Stormwind, Orgrimmar, or a neutral spot arranged by the team.",
+          step3_label: "Step 3 · Claim your reward",
+          step3_title: "USDT to your wallet",
+          step3_desc: "Once the Gold is delivered, the team sends USDT straight to the wallet you provide. Fast, simple, and clear — quest complete!",
+          social_kicker: "Hearth back to the Fox Den",
+          social_title: "Connect with GegeTeam",
+          social_sub: "Follow the Fox Den for the latest rates, WoW Forever events, and team community updates.",
+          soc_fp_title: "GegeTeam Fanpage",
+          soc_fp_desc: "Latest rate updates and announcements from the team",
+          soc_fbg_title: "Facebook Group",
+          soc_fbg_desc: "GegeTeam's player community",
+          soc_zg_title: "Zalo Group",
+          soc_zg_desc: "Community chat group with fast daily support",
+          soc_za_title: "Zalo Admin",
+          soc_za_desc: "Message the admin directly to confirm your trade",
+          soc_dc_title: "GegeTeam Discord",
+          soc_dc_desc: "The team's Discord server",
+          soon_tag: "Coming soon",
+          footer_text: "We buy WoW Forever Gold — World of Warcraft: Forever by Blizzard · Payment via USDT wallet.",
+          float_aria: "Chat on Zalo with the GegeTeam admin"
+        }
+      };
+      var currentLang = "vi";
+      function tt(key) { return (I18N[currentLang] && I18N[currentLang][key]) || I18N.vi[key] || key; }
+      function applyLang(lang) {
+        if (!I18N[lang]) lang = "vi";
+        currentLang = lang;
+        document.documentElement.lang = lang === "en" ? "en" : "vi";
+        document.title = tt("doc_title");
+        var dict = I18N[lang];
+        var els = document.querySelectorAll("[data-i18n]");
+        for (var i = 0; i < els.length; i++) {
+          var k = els[i].getAttribute("data-i18n");
+          if (dict[k] !== undefined) els[i].innerHTML = dict[k];
+        }
+        var phs = document.querySelectorAll("[data-i18n-ph]");
+        for (var j = 0; j < phs.length; j++) {
+          var pk = phs[j].getAttribute("data-i18n-ph");
+          if (dict[pk] !== undefined) phs[j].setAttribute("placeholder", dict[pk]);
+        }
+        var alts = document.querySelectorAll("[data-i18n-alt]");
+        for (var a = 0; a < alts.length; a++) {
+          var ak = alts[a].getAttribute("data-i18n-alt");
+          if (dict[ak] !== undefined) alts[a].setAttribute("alt", dict[ak]);
+        }
+        var arias = document.querySelectorAll("[data-i18n-aria]");
+        for (var r = 0; r < arias.length; r++) {
+          var rk = arias[r].getAttribute("data-i18n-aria");
+          if (dict[rk] !== undefined) arias[r].setAttribute("aria-label", dict[rk]);
+        }
+        var btns = document.querySelectorAll("[data-set-lang]");
+        for (var b = 0; b < btns.length; b++) {
+          var active = btns[b].getAttribute("data-set-lang") === lang;
+          btns[b].classList.toggle("is-active", active);
+          btns[b].setAttribute("aria-pressed", active ? "true" : "false");
+        }
+        if (typeof render === "function") render();
+      }
+
+      /*
+        RATES — bảng rate thu mua (đơn vị: USDT / 1 Gold).
+        Hiện chưa có rate chính thức: mọi ô để null = "Đang cập nhật".
+        Khi có database rate, chỉ cần gán số vào đúng ô
+        RATES[ruleset][faction] = <số USDT cho 1 Gold>,
+        thẻ thu mua, máy tính và bảng rate sẽ tự hiển thị & tính theo.
+      */
+      var RATES = {
+        "normal":      { "alliance": null, "horde": null },
+        "pvp":         { "alliance": null, "horde": null },
+        "roleplaying": { "alliance": null, "horde": null },
+        "rp-pvp":      { "alliance": null, "horde": null }
+      };
+
+      var state = { ruleset: "normal", faction: "alliance" };
+
+      var rateValue = document.getElementById("rateValue");
+      var perMain = document.getElementById("perMain");
+      var qtyInput = document.getElementById("qtyInput");
+      var totalValue = document.getElementById("totalValue");
+      var calcNote = document.getElementById("calcNote");
+
+      function fmtUsdt(n) {
+        return n.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 4 });
+      }
+
+      function currentRate() {
+        var r = RATES[state.ruleset];
+        return r ? r[state.faction] : null;
+      }
+
+      function render() {
+        var rate = currentRate();
+        if (rate === null || rate === undefined) {
+          rateValue.textContent = tt("rate_pending");
+          rateValue.classList.add("pending");
+          perMain.textContent = "— USDT";
+          calcNote.textContent = tt("calc_note_pending");
+        } else {
+          rateValue.textContent = fmtUsdt(rate) + tt("rate_with_value");
+          rateValue.classList.remove("pending");
+          perMain.textContent = fmtUsdt(rate) + " USDT";
+          calcNote.textContent = tt("calc_note_live");
+        }
+        calc();
+        var rows = document.querySelectorAll("#rateBody tr");
+        for (var i = 0; i < rows.length; i++) {
+          rows[i].classList.toggle("is-active", rows[i].getAttribute("data-row") === state.ruleset);
+        }
+      }
+
+      function calc() {
+        var rate = currentRate();
+        var raw = qtyInput.value.replace(/[^\d.]/g, "");
+        var qty = parseFloat(raw);
+        if (rate === null || rate === undefined || isNaN(qty) || qty <= 0) {
+          totalValue.textContent = "—";
+          return;
+        }
+        totalValue.textContent = fmtUsdt(qty * rate);
+      }
+
+      function setSegSelection(seg, btn) {
+        var btns = seg.querySelectorAll("button");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].setAttribute("aria-pressed", btns[i] === btn ? "true" : "false");
+        }
+      }
+
+      function selectFaction(faction) {
+        state.faction = faction;
+        var seg = document.getElementById("factionSeg");
+        var btns = seg.querySelectorAll("button");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].setAttribute("aria-pressed", btns[i].getAttribute("data-faction") === faction ? "true" : "false");
+        }
+        render();
+      }
+
+      function bindSeg(id, key) {
+        var seg = document.getElementById(id);
+        seg.addEventListener("click", function (e) {
+          var btn = e.target.closest("button");
+          if (!btn) return;
+          state[key] = btn.getAttribute("data-" + key);
+          setSegSelection(seg, btn);
+          render();
+        });
+      }
+      bindSeg("rulesetSeg", "ruleset");
+      bindSeg("factionSeg", "faction");
+
+      // Nút chọn phe ở thanh chiến tranh & thẻ thủ đô: chọn faction rồi cuộn tới thẻ thu mua
+      var gotoBtns = document.querySelectorAll("[data-goto-faction]");
+      for (var g = 0; g < gotoBtns.length; g++) {
+        gotoBtns[g].addEventListener("click", function () {
+          selectFaction(this.getAttribute("data-goto-faction"));
+          document.getElementById("thu-mua").scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+
+      qtyInput.addEventListener("input", calc);
+
+      (function fillTable() {
+        var cells = document.querySelectorAll(".rate-table td.cell");
+        for (var i = 0; i < cells.length; i++) {
+          var rs = cells[i].getAttribute("data-ruleset");
+          var fc = cells[i].getAttribute("data-faction");
+          var v = RATES[rs] ? RATES[rs][fc] : null;
+          if (v !== null && v !== undefined) {
+            cells[i].innerHTML = '<span class="val">' + fmtUsdt(v) + " USDT</span>";
+          }
+        }
+      })();
+
+      var langBtns = document.querySelectorAll("[data-set-lang]");
+      for (var lb = 0; lb < langBtns.length; lb++) {
+        langBtns[lb].addEventListener("click", function () { applyLang(this.getAttribute("data-set-lang")); });
+      }
+
+      render();
+    </script>
+  </body>
+</html>
