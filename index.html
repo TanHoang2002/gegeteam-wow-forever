@@ -48,7 +48,7 @@
       .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
 
       /* ---------- Thanh đầu trang ---------- */
-      .topbar { position: relative; z-index: 5; }
+      .topbar { position: absolute; z-index: 5; left: 0; right: 0; top: 0; background: linear-gradient(180deg, rgba(4, 5, 10, 0.8), transparent); }
       .topbar-in { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
       .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; text-decoration: none; }
       .brand img { width: 52px; height: 52px; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7)); }
@@ -59,12 +59,11 @@
 
       /* ---------- Cổng Hắc Ám ---------- */
       .hero-wrap { margin-bottom: 24px; }
-      .hero { position: relative; display: flex; align-items: center; aspect-ratio: 2048 / 973; }
-      .hero-art { position: absolute; inset: 0; isolation: isolate; overflow: hidden; border: 2px solid var(--gold-deep); border-radius: 10px; background: #15110a; box-shadow: 0 16px 38px rgba(0, 0, 0, 0.6); }
-      .hero-art img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; }
-      .hero-frame { position: absolute; inset: -2px; z-index: 2; pointer-events: none; --cs: 32px; background: var(--c-tl) top left / var(--cs) no-repeat, var(--c-tr) top right / var(--cs) no-repeat, var(--c-br) bottom right / var(--cs) no-repeat, var(--c-bl) bottom left / var(--cs) no-repeat; }
-      .hero-art::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(5, 5, 10, 0.78) 0%, rgba(5, 5, 10, 0.45) 40%, rgba(5, 5, 10, 0) 66%); }
-      .hero-in { position: relative; z-index: 3; padding: 28px 40px; }
+      .hero { position: relative; display: flex; align-items: center; height: min(max(430px, 36vw), 900px); }
+      .hero-art { position: absolute; inset: 0; isolation: isolate; overflow: hidden; border-bottom: 2px solid var(--gold-deep); background: #15110a; box-shadow: 0 1px 0 #000, 0 12px 28px rgba(0, 0, 0, 0.55); }
+      .hero-art img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+      .hero-art::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(5, 5, 10, 0.8) 0%, rgba(5, 5, 10, 0.5) 38%, rgba(5, 5, 10, 0) 58%); }
+      .hero-in { position: relative; z-index: 3; width: 100%; max-width: 1180px; margin: 0 auto; padding: 56px 20px 24px; }
       .hero h1 { margin: 0; font-family: var(--display); font-weight: 900; font-size: clamp(2.2rem, 5.2vw, 3.9rem); line-height: 1.02; letter-spacing: 0.01em; color: var(--wow-yellow); background: linear-gradient(180deg, #fff3a8 0%, #ffd100 45%, #c47f07 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 3px 0 #4a2c00) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.9)); }
       .hero h1 span { display: block; margin-top: 8px; font-size: 0.52em; font-weight: 700; letter-spacing: 0.34em; background: linear-gradient(180deg, #d9ffe0, #62e27f 70%); -webkit-background-clip: text; background-clip: text; }
       .hero-slogan { margin: 16px 0 0; font-weight: 700; font-size: clamp(1.1rem, 2.6vw, 1.45rem); color: var(--gold-bright); text-shadow: 0 2px 10px #000; }
@@ -226,10 +225,11 @@
         .realms { grid-template-columns: 1fr 1fr; }
         .faction-card { min-height: 320px; }
         .intro-art { min-height: 300px; }
-        .hero { display: block; aspect-ratio: auto; }
+        .topbar { position: relative; background: none; }
+        .hero { display: block; height: auto; }
         .hero-art { position: relative; inset: auto; aspect-ratio: 2048 / 973; }
         .hero-art::before { display: none; }
-        .hero-in { padding: 20px 2px 0; }
+        .hero-in { padding: 20px 20px 0; }
       }
       @media (max-width: 560px) {
         .brand img { width: 44px; height: 44px; }
@@ -257,7 +257,9 @@
       html { cursor: var(--cur) 3 2, auto; scroll-padding-bottom: 90px; }
       :root a, :root button, :root .race { cursor: var(--cur-p) 3 2, pointer; }
       :root input[type="text"], :root textarea { cursor: text; }
-      body { background: url("assets/stone.webp"), radial-gradient(1100px 620px at 50% 520px, #171a2c, transparent 72%), var(--bg); }
+      html { background: #0a0c16; }
+      body { background: none; }
+      body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(70vw 90vh at 0% 45%, rgba(38, 86, 170, 0.2), transparent 70%), radial-gradient(70vw 90vh at 100% 55%, rgba(170, 48, 26, 0.17), transparent 70%), linear-gradient(180deg, #0d1020, #090a12); }
 
       /* Góc viền kim loại */
       .tooltip, .item, .realm, .boost-banner, .intro-art, .faction-card { position: relative; }
@@ -330,7 +332,7 @@
       .crew small { color: #efe6cb; }
 
       /* Chân trang */
-      footer { padding: 26px 0 112px; background: url("assets/stone.webp"), #05060b; }
+      footer { padding: 26px 0 112px; background: rgba(4, 5, 10, 0.6); }
       .foot-in { display: flex; align-items: center; justify-content: center; gap: 12px; }
       .foot-in img { flex: none; width: 52px; height: 52px; object-fit: contain; }
 
@@ -339,7 +341,7 @@
       .bar-crest { position: relative; z-index: 1; flex: none; width: 46px; height: 52px; filter: drop-shadow(0 4px 7px #000); }
       .bar-crest:first-child { margin-right: -9px; }
       .bar-crest:last-child { margin-left: -9px; }
-      .bar-body { padding: 6px 14px 5px; border: 2px solid #c79a2c; border-radius: 9px; background: url("assets/stone.webp"), linear-gradient(180deg, #3a3528, #15130d); box-shadow: 0 0 0 1px #000, 0 10px 26px rgba(0, 0, 0, 0.7); }
+      .bar-body { padding: 6px 14px 5px; border: 2px solid #c79a2c; border-radius: 9px; background: linear-gradient(180deg, #3a3528, #15130d); box-shadow: 0 0 0 1px #000, 0 10px 26px rgba(0, 0, 0, 0.7); }
       .bar-slots { display: flex; gap: 5px; }
       .slot { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; width: 92px; height: 54px; padding: 3px; border: 2px solid #6c6248; border-radius: 6px; background: radial-gradient(circle at 40% 25%, #33363f, #0b0c12 78%); color: var(--ink); font-size: 0.74rem; font-weight: 700; line-height: 1.2; text-decoration: none; box-shadow: inset 0 0 8px #000; transition: border-color .15s, color .15s, box-shadow .15s; }
       .slot svg { width: 22px; height: 22px; }
@@ -403,7 +405,7 @@
       }
       /* Điện thoại xoay ngang: thanh menu thấp lại để không chiếm màn hình */
       @media (max-height: 480px) {
-        .hero-art { max-width: 420px; }
+        .hero-art { aspect-ratio: 3.4; }
         .slot { flex-direction: row; gap: 5px; height: 36px; white-space: nowrap; }
         .slot svg, .slot-admin img { width: 18px; height: 18px; }
         .xp { margin-top: 3px; height: 5px; }
@@ -486,12 +488,11 @@
       </div>
     </div>
 
-    <header class="wrap hero-wrap">
+    <header class="hero-wrap">
       <div class="hero">
       <div class="hero-art">
         <img src="assets/hero-darkportal.webp" srcset="assets/hero-darkportal-m.webp 1000w, assets/hero-darkportal.webp 2048w" sizes="(max-width: 1180px) 100vw, 1140px" width="2048" height="973" alt="" fetchpriority="high" />
         <div class="embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <span class="hero-frame" aria-hidden="true"></span>
       </div>
       <div class="hero-in">
         <h1>World of Warcraft <span>Forever</span></h1>
