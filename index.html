@@ -462,6 +462,33 @@
         .quest-toast.show { animation-duration: .01s, 2.8s; }
         .slot, .quest-seal, .admin-say { transition: none; }
       }
+
+      /* ---------- MÀN HÌNH RỘNG: nội dung giãn ra hai bên, ảnh đầu trang lớn hơn ---------- */
+      @media (min-width: 921px) {
+        /* Cao theo đúng tỷ lệ ảnh (2048x973) nhưng không quá chiều cao màn hình */
+        .hero { height: min(100vh, 47.5vw); min-height: 430px; }
+        .hero-art img { object-position: center 45%; }
+      }
+      /* Banner dùng ảnh chính thức độ phân giải cao (Onyxia's Lair 2400px, WoW Forever Horde key art 1920px) */
+      .intro-art img { object-position: center 40%; }
+      .boost-banner img { height: clamp(140px, 17vw, 400px); object-position: center 62%; }
+      @media (min-width: 921px) {
+        .intro-art { min-height: clamp(420px, 26vw, 620px); }
+      }
+      @media (min-width: 1440px) {
+        html { font-size: 17px; }
+        .wrap, .hero-in { max-width: min(1760px, 92vw); padding-left: clamp(20px, 2.5vw, 48px); padding-right: clamp(20px, 2.5vw, 48px); }
+        .hero h1 { font-size: 4.8rem; }
+        .hero-lede { max-width: 36rem; }
+        .brand img { width: 64px; height: 64px; }
+        .brand b { font-size: 1.25rem; }
+      }
+      @media (min-width: 2000px) {
+        html { font-size: 20px; }
+        .wrap, .hero-in { max-width: 94vw; }
+        .hero h1 { font-size: 5.6rem; }
+        .brand img { width: 76px; height: 76px; }
+      }
     </style>
   </head>
   <body data-faction="alliance">
@@ -477,7 +504,7 @@
     </svg>
     <div class="topbar">
       <div class="wrap topbar-in">
-        <a class="brand" href="#rate">
+        <a class="brand" href="/" title="Về trang chủ GeGe Team">
           <img src="assets/logo-160.webp" alt="" width="52" height="52" />
           <b data-i18n="brand">GegeTeam · Nhà Cáo</b>
         </a>
@@ -491,7 +518,7 @@
     <header class="hero-wrap">
       <div class="hero">
       <div class="hero-art">
-        <img src="assets/hero-darkportal.webp" srcset="assets/hero-darkportal-m.webp 1000w, assets/hero-darkportal.webp 2048w" sizes="(max-width: 1180px) 100vw, 1140px" width="2048" height="973" alt="" fetchpriority="high" />
+        <img src="assets/hero-darkportal.webp" srcset="assets/hero-darkportal-m.webp 1000w, assets/hero-darkportal.webp 2048w" sizes="100vw" width="2048" height="973" alt="" fetchpriority="high" />
         <div class="embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>
       <div class="hero-in">
@@ -604,7 +631,7 @@
       <!-- ================= GIỚI THIỆU ================= -->
       <section class="block" id="gioi-thieu">
         <div class="intro-art" data-reveal>
-          <img src="assets/moltencore.jpg" alt="Hang dung nham Molten Core" data-i18n-alt="alt_mc" loading="lazy" />
+          <img src="assets/banner-onyxia.webp" alt="Hang ổ rồng Onyxia trong World of Warcraft Classic" data-i18n-alt="alt_mc" loading="lazy" />
           <div class="sparks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
           <p data-i18n="art_quote">Gold cày từ Molten Core không nên nằm yên trong túi.</p>
         </div>
@@ -614,7 +641,7 @@
       <section class="block" id="boosting">
         <h2 class="sec-title" data-reveal>Boosting</h2>
         <p class="sec-sub" data-reveal data-i18n="boost_sub">Không có thời gian cày? Giá thương lượng trực tiếp với Admin theo từng yêu cầu.</p>
-        <div class="boost-banner" data-reveal><img src="assets/heroes-banner.jpg" alt="Các anh hùng của World of Warcraft" data-i18n-alt="alt_heroes" loading="lazy" /></div>
+        <div class="boost-banner" data-reveal><img src="assets/banner-forever-horde.webp" alt="Các anh hùng của World of Warcraft" data-i18n-alt="alt_heroes" loading="lazy" /></div>
         <div class="boost-grid" id="boostGrid"></div>
         <p class="boost-note" data-i18n="boost_note">Không gửi mật khẩu tài khoản vào nhóm chung. Cách bàn giao nhân vật sẽ được trao đổi riêng với Admin.</p>
       </section>
@@ -646,7 +673,7 @@
 
     <footer>
       <div class="wrap foot-in">
-        <img src="assets/logo-160.webp" alt="" width="52" height="52" loading="lazy" />
+        <a href="/" title="Về trang chủ GeGe Team"><img src="assets/logo-160.webp" alt="Về trang chủ GeGe Team" width="52" height="52" loading="lazy" /></a>
         <span data-i18n="brand">GegeTeam · Nhà Cáo</span>
       </div>
     </footer>
@@ -757,7 +784,7 @@
       var EN_ALT = {
         alt_a: "Stormwind City, capital of the Alliance",
         alt_h: "Orgrimmar, capital of the Horde",
-        alt_mc: "The Molten Core lava cavern",
+        alt_mc: "Onyxia's Lair in World of Warcraft Classic",
         alt_heroes: "Heroes of World of Warcraft"
       };
       var TEXT = {
