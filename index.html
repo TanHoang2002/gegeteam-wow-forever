@@ -9,7 +9,7 @@
     <title>GegeTeam — Thu mua Gold WoW Forever</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800;900&family=Cinzel:wght@700;800;900&display=swap" rel="stylesheet" />
     <style>
       :root {
         --bg: #070910;
@@ -463,6 +463,12 @@
         .slot, .quest-seal, .admin-say { transition: none; }
       }
 
+      /* ---------- Logo WoW Forever phía trên tiêu đề, tiêu đề dùng font Cinzel kiểu chữ khắc ---------- */
+      .hero-logo { display: block; width: clamp(170px, 16vw, 340px); height: auto; margin: 0 0 14px -6px; filter: drop-shadow(0 10px 24px rgba(0, 0, 0, .75)); }
+      .hero h1 { font-family: "Cinzel", Georgia, serif; font-weight: 900; letter-spacing: .03em; line-height: 1.08; filter: drop-shadow(0 3px 0 #3a2300) drop-shadow(0 8px 18px rgba(0, 0, 0, .7)); }
+      .hero h1 span { font-family: "Cinzel", Georgia, serif; font-weight: 700; letter-spacing: .42em; margin-top: 10px; }
+      @media (max-width: 920px) { .hero-logo { width: 170px; margin-bottom: 10px; } }
+
       /* ---------- MÀN HÌNH RỘNG: nội dung giãn ra hai bên, ảnh đầu trang lớn hơn ---------- */
       @media (min-width: 921px) {
         /* Cao theo đúng tỷ lệ ảnh (2048x973) nhưng không quá chiều cao màn hình */
@@ -522,6 +528,7 @@
         <div class="embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>
       <div class="hero-in">
+        <img class="hero-logo" src="assets/wow-forever-logo.webp" width="900" height="733" alt="World of Warcraft Forever" fetchpriority="high" />
         <h1>World of Warcraft <span>Forever</span></h1>
         <p class="hero-slogan" data-i18n="slogan">Đam mê đủ lớn · Anh em đủ chất</p>
         <p class="hero-lede" data-i18n="lede">Túi đầy Gold mà chưa biết bán cho ai? Mang qua Nhà Cáo, đổi thành USDT về ví.</p>
