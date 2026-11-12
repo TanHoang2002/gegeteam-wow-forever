@@ -41,8 +41,8 @@
 
   /* Ảnh nền mờ phía trên trang */
   .page-art{position:absolute;inset:0 0 auto 0;height:620px;overflow:hidden;pointer-events:none;z-index:0}
-  .page-art img{width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.36}
-  .page-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,13,.2),var(--bg) 92%),linear-gradient(90deg,var(--bg) 0,rgba(11,11,13,.4) 30%,rgba(11,11,13,.4) 70%,var(--bg))}
+  .page-art img{width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.55}
+  .page-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,13,.05),rgba(11,11,13,.35) 55%,var(--bg) 95%),linear-gradient(90deg,var(--bg) 0,rgba(11,11,13,.25) 28%,rgba(11,11,13,.25) 72%,var(--bg))}
 
   /* ---------- thanh trên cùng ---------- */
   .topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:12px 20px;padding:14px 32px;background:rgba(11,11,13,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
@@ -293,6 +293,19 @@
     .ask-btn{margin-top:14px}
     .d-banner img{height:230px}
   }
+  /* ---------- Chất GeGe: huy hiệu cáo, cáo mờ cỡ lớn, vạch cam, tem trên Ưu đãi nổi bật ---------- */
+  body{background-image:repeating-linear-gradient(115deg,rgba(255,255,255,.018) 0 1px,transparent 1px 140px)}
+  .hero{position:relative;isolation:isolate;padding-top:70px;min-height:330px}
+  .hero h1,.hero .lede{max-width:calc(100% - min(30%,320px) - 24px)}
+  .hero::after{content:"";position:absolute;right:0;top:10px;width:min(30%,320px);aspect-ratio:1/1;background:url(assets/logo.png) center/contain no-repeat;opacity:.92;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6));pointer-events:none;z-index:-1}
+  .hero h1::after{content:"";display:block;width:90px;height:5px;margin-top:14px;border-radius:5px;background:linear-gradient(90deg,var(--fox),rgba(240,118,42,0))}
+  .side-label{display:flex;align-items:center;gap:8px}
+  .side-label img{width:22px;height:22px;border-radius:50%;box-shadow:0 0 0 2px rgba(240,118,42,.5)}
+  .cat-section h2{display:flex;align-items:center;gap:12px}
+  .cat-section h2::before{content:"";flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:url(assets/logo.png) center/cover;box-shadow:0 0 0 2px rgba(240,118,42,.6),0 6px 16px rgba(0,0,0,.45)}
+  .cat-section h2::after{content:"";flex:0 0 auto;width:48px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--fox),transparent);align-self:flex-end;margin-bottom:.35em}
+  .top-offers .p-card{border-color:rgba(240,118,42,.35);box-shadow:inset 0 3px 0 var(--fox)}
+  @media (max-width:960px){ .hero{padding-top:36px;min-height:0} .hero h1,.hero .lede{max-width:none} .hero::after{width:55%;top:0;right:0;opacity:.18} .cat-section h2::before{width:30px;height:30px} .cat-section h2::after{display:none} }
   /* ---------- hiệu ứng ---------- */
   /* Rê chuột vào thẻ: thẻ phóng to, ảnh phóng nhẹ, viền cam sáng.
      Viết kèm html.fx .reveal.in để thắng quy tắc transform:none của hiệu ứng hiện dần. */
@@ -361,7 +374,7 @@
   <main class="wrap">
     <div class="catalog-layout">
       <aside class="sidebar">
-        <p class="side-label" data-i18n="side_label">WoW Forever</p>
+        <p class="side-label"><img src="assets/logo.png" alt="" width="22" height="22"><span data-i18n="side_label">WoW Forever</span></p>
         <div class="side-list" id="sideList" role="group" aria-label="Categories"></div>
         <a class="ask-btn" href="https://discord.gg/t2fPyUPGY" target="_blank" rel="noopener">
           <span class="ask-mail" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></span>
@@ -1248,8 +1261,8 @@ function productCard(p){
   card.addEventListener("click", function(){ openProduct(p.id); });
   return card;
 }
-function sectionEl(title, list){
-  var s = el("div","cat-section");
+function sectionEl(title, list, top){
+  var s = el("div","cat-section" + (top ? " top-offers" : ""));
   s.appendChild(el("h2",null,title));
   var g = el("div","card-grid");
   list.forEach(function(p){ g.appendChild(productCard(p)); });
@@ -1270,14 +1283,14 @@ function renderCatalog(){
     return;
   }
   // Cày cấp (mục mặc định khi mở trang) có thêm Ưu đãi nổi bật ở trên
-  if(state.cat === "powerleveling") catalogMain.appendChild(sectionEl(t("sec_top"), PRODUCTS.filter(function(p){ return p.featured; })));
+  if(state.cat === "powerleveling") catalogMain.appendChild(sectionEl(t("sec_top"), PRODUCTS.filter(function(p){ return p.featured; }), true));
   if(state.cat !== "all"){
     var list = PRODUCTS.filter(function(p){ return p.cats.indexOf(state.cat)>=0; });
     catalogMain.appendChild(sectionEl(t("cat_"+state.cat), list));
     return;
   }
   var feat = PRODUCTS.filter(function(p){ return p.featured; });
-  catalogMain.appendChild(sectionEl(t("sec_top"), feat));
+  catalogMain.appendChild(sectionEl(t("sec_top"), feat, true));
   CATEGORIES.filter(function(c){ return c!=="all"; }).forEach(function(c){
     var list = PRODUCTS.filter(function(p){ return p.cat===c; });
     if(list.length) catalogMain.appendChild(sectionEl(t("cat_"+c), list));
@@ -1792,7 +1805,7 @@ var topbar = document.querySelector(".topbar"), pageArt = document.querySelector
 function onScroll(){
   var y = window.scrollY;
   topbar.classList.toggle("scrolled", y > 8);
-  if(pageArt && !reduceMotion && y < 900){ pageArt.style.transform = "translateY(" + (y * 0.35) + "px) scale(" + (1 + y * 0.00015) + ")"; pageArt.style.opacity = String(Math.max(0, .36 - y * 0.00036)); }
+  if(pageArt && !reduceMotion && y < 900){ pageArt.style.transform = "translateY(" + (y * 0.35) + "px) scale(" + (1 + y * 0.00015) + ")"; pageArt.style.opacity = String(Math.max(0, .55 - y * 0.00055)); }
   ticking = false;
 }
 window.addEventListener("scroll", function(){ if(!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
