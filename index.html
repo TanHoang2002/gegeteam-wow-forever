@@ -334,6 +334,14 @@
     html.fx .reveal{opacity:1;transform:none;transition:none}
     .p-card:hover,.p-card:hover .art,html.fx .p-card.reveal.in:hover{transform:none}
   }
+
+/* GeGe: bỏ logo + gạch sáng ở tiêu đề; hover thẻ không phát sáng viền */
+h2::before,h2::after,.hero h1::after,.cat-section h2::after{display:none !important;content:none !important}
+.side-label img{display:none !important}
+.p-card:hover,.p-card:focus-visible,html.fx .p-card.reveal.in:hover,html.fx .p-card.reveal.in:focus-visible{
+  border-color:rgba(255,255,255,.16) !important;
+  box-shadow:0 20px 40px rgba(0,0,0,.5) !important;
+}
 </style>
 </head>
 <body>
